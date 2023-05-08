@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/TalMizrahii/AP2-Ex1"><img src="https://cloud2data.com/wp-content/uploads/2023/01/HTML-CSS-Review.png" alt="HTML" width="200"></a>
+  <a href="https://github.com/TalMizrahii/AP2-Ex1"><img src="https://logos-download.com/wp-content/uploads/2016/09/React_logo_wordmark.png" alt="HTML" width="200"></a>
   <br>
   Advanced-Programming-2
   <br>
