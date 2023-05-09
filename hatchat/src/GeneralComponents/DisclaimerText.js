@@ -12,5 +12,4 @@ function DisclaimerText() {
         </div>
     );
 }
-
 export default DisclaimerText;
