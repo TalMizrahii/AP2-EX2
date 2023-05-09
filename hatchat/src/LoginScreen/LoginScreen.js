@@ -1,25 +1,22 @@
 import './LoginScreen.css';
 import GeneralBackground from '../GeneralComponents/GeneralBackground'
-import UserNameInput from "./UserNameInput";
+import FullNameInput from "./FullNameInput";
 import PasswordInput from "./PasswordInput";
 import LoginButton from "./LoginButton";
 import DisclaimerText from "../GeneralComponents/DisclaimerText";
-
+import RegisterBox from "../GeneralComponents/RegisterBox";
 function LoginScreen() {
     return (
         <>
-            <GeneralBackground/>
-            <div className="register">
-                <h1 id="chatName">
-                    Hat Chat
-                </h1>
+            <GeneralBackground />
+            <RegisterBox>
                 <form>
-                    <UserNameInput/>
-                    <PasswordInput/>
-                    <LoginButton/>
-                    <DisclaimerText/>
+                    <FullNameInput />
+                    <PasswordInput />
+                    <LoginButton />
+                    <DisclaimerText />
                 </form>
-            </div>
+            </RegisterBox>
         </>
     );
 }

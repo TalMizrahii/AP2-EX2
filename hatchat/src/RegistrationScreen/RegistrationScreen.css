@@ -1,0 +1,25 @@
+#chatName {
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 5%;
+    color: black;
+    font-size: 70px;
+}
+
+.profilePictureLabel{
+    float: left;
+}
+
+#subButton{
+    float: left;
+    margin-top: 15px;
+}
+
+.bottomDisclaimer {
+    margin-top: 25%;
+    margin-bottom: 2%;
+}
+
+.mb-3{
+    height: 50px;
+}

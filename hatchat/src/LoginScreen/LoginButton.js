@@ -5,5 +5,4 @@ function LoginButton() {
         </div>
     );
 }
-
 export default LoginButton;
