@@ -1,14 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import LoginScreen from "./LoginScreen/LoginScreen";
-import ChatScreen from "./ChatScreen/ChatScreen";
-import RegistrationScreen from "./RegistrationScreen/RegistrationScreen";
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import LoginScreen from './LoginScreen/LoginScreen';
+import ChatScreen from './ChatScreen/ChatScreen';
+import RegistrationScreen from './RegistrationScreen/RegistrationScreen';
 
-root.render(
-    <React.StrictMode>
-        <RegistrationScreen/>
-        {/*<LoginScreen />*/}
-    </React.StrictMode>
-);
+const App = () => {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Outlet />}>
+                    <Route path="/" element={<ChatScreen />} />
+                    <Route path="/chat" element={<ChatScreen />} />
+                    <Route path="/register" element={<ChatScreen />} />
+                </Route>
+            </Routes>
+        </Router>
+    );
+};
+
+ReactDOM.render(<App />, document.getElementById('root'));
