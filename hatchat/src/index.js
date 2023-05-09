@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import { Switch } from "react-router";
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 
 import LoginScreen from './LoginScreen/LoginScreen';
 import ChatScreen from './ChatScreen/ChatScreen';
@@ -10,13 +9,15 @@ import RegistrationScreen from './RegistrationScreen/RegistrationScreen';
 const App = () => {
     return (
         <Router>
-            <Switch>
-                <Route exact path="/" component={LoginScreen}/>
-                <Route path="/chat" component={ChatScreen}/>
-                <Route path="/register" component={RegistrationScreen}/>
-            </Switch>
+            <Routes>
+                <Route path="/" element={<Outlet />}>
+                    <Route path="/" element={<LoginScreen />} />
+                    <Route path="/chat" element={<ChatScreen />} />
+                    <Route path="/register" element={<RegistrationScreen />} />
+                </Route>
+            </Routes>
         </Router>
     );
 };
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
