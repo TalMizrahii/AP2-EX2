@@ -1,11 +1,10 @@
 import {Link} from 'react-router-dom';
 
-
 function DisclaimerText() {
     return (
         <div className="bottomDisclaimer">
             <p>
-                Not registered yet? <Link id="linkToChat" to="/RegistrationScreen">Click here</Link> to register.
+                Not registered yet? <Link id="linkToChat" to="/register">Click here</Link> to register.
             </p>
 
             <div dir="ltr"
