@@ -1,5 +1,5 @@
 import './ChatScreen.css'
-
+import '../LoginScreen/LoginScreen.css'
 function ChatScreen() {
     return (
         <>
