@@ -1,11 +1,11 @@
-import './App.css';
-
-function App() {
+import './LoginScreen.css';
+function LoginScreen() {
     return (
         <>
             <div className="bg"></div>
             <div className="bg bg2"></div>
             <div className="bg bg3"></div>
+
             <div className="register">
                 <h1 id="chatName">
                     Hat Chat
@@ -38,4 +38,4 @@ function App() {
     );
 }
 
-export default App;
+export default LoginScreen;
