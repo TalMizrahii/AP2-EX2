@@ -309,10 +309,10 @@ body {
 }
 
 .DivWithScroll {
-    height: 86%;
-    overflow: scroll;
+    height: 80%;
+    /*overflow: scroll;*/
     overflow-x: hidden;
-    /*overflow-y: auto;*/
+    overflow-y: auto;
     max-height: 100%;
 }
 

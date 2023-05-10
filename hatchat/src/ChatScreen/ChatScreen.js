@@ -22,7 +22,10 @@ import InputMsgLowerBar from "./ChatConversation/inputMsgLowerBar";
 import MsgScrollerGood from "./ChatConversation/MsgScrollerGood";
 import DropItemListBtns from "./ChatHeaderAndList/DropItemListBtns";
 
+
 function ChatScreen() {
+
+
     return (
         <>
             <GeneralBackground/>
@@ -88,13 +91,13 @@ function ChatScreen() {
                             <UserSelfMsg>
                                 See you.
                             </UserSelfMsg>
+
                         </MsgScrollerGood>
                     </MsgWrapperScroll>
                 </ChatSpaceMsges>
             </GeneralContainer>
         </>
-    )
-        ;
+    );
 }
 
 export default ChatScreen;
