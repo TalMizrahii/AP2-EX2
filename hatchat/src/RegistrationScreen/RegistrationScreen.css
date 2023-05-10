@@ -11,13 +11,24 @@
 }
 
 #subButton{
-    float: left;
+    float: none;
     margin-top: 15px;
 }
 
 .bottomDisclaimer {
     margin-top: 25%;
     margin-bottom: 2%;
+}
+
+.bottomCopyRight {
+    margin-top: 10%;
+    margin-bottom: 2%;
+}
+
+.PasswordRequirement {
+    margin-top: 10%;
+    margin-bottom: 2%;
+    font-size: x-small;
 }
 
 .mb-3{

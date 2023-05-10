@@ -2,10 +2,10 @@ import './LoginScreen.css';
 import GeneralBackground from '../GeneralComponents/GeneralBackground';
 import LoginButton from "./LoginButton";
 import FullNameInput from "./FullNameInput";
-import PasswordInput from "./PasswordInput";
 import {useState} from 'react';
 import DisclaimerText from "../GeneralComponents/DisclaimerText";
 import RegisterBox from "../GeneralComponents/RegisterBox";
+import PasswordInput from "./PasswordInput";
 
 function LoginScreen() {
     const [username, setUsername] = useState('');

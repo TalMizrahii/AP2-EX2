@@ -2,24 +2,24 @@ import './RegistrationScreen.css';
 import GeneralBackground from "../GeneralComponents/GeneralBackground";
 import RegisterBox from "../GeneralComponents/RegisterBox";
 import FullNameInput from "../LoginScreen/FullNameInput";
-import PasswordInput from "../LoginScreen/PasswordInput";
+import PasswordInputAndReq from "./PasswordInputAndReq";
 import ConfirmPasswordInput from "./ConfirmPasswordInput";
 import UserNameInput from "./UserNameInput";
 import ProfilePictureText from "./ProfilePictureText";
 import CreateAccountBtn from "./CreateAccountBtn";
-import DisclaimerText from "../GeneralComponents/DisclaimerText";
+import Copyright from "../GeneralComponents/Copyright";
 
 function RegistrationScreen() {
     return (<>
             <GeneralBackground/>
             <RegisterBox>
                 <FullNameInput/>
-                <PasswordInput/>
+                <PasswordInputAndReq/>
                 <ConfirmPasswordInput/>
                 <UserNameInput/>
                 <ProfilePictureText/>
                 <CreateAccountBtn/>
-                <DisclaimerText/>
+                <Copyright/>
             </RegisterBox>
         </>
     );
