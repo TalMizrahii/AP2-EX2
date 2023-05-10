@@ -1,8 +1,15 @@
-function ListGroupOfContacts({children}) {
+import UserInList from "./UserInList";
+
+function ListGroupOfContacts({filter}) {
+
+    const filterList = filter.map((contact, key) =>{
+       return <UserInList key={key} contact={contact} />
+    });
+
     return (
         <div id="listScroll">
             <ul className="list-group">
-                {children}
+                {filterList}
             </ul>
         </div>
     );

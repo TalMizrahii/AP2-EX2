@@ -21,10 +21,19 @@ import MsgWrapperScroll from "./ChatConversation/MsgWrapperScroll";
 import InputMsgLowerBar from "./ChatConversation/inputMsgLowerBar";
 import MsgScrollerGood from "./ChatConversation/MsgScrollerGood";
 import DropItemListBtns from "./ChatHeaderAndList/DropItemListBtns";
+import {useState} from "react";
+import contactsData from "../DataBase/ContactsData";
 
 
 function ChatScreen() {
 
+    const [filterList, setFilterList] = useState(contactsData);
+
+    const doSearch = function (content){
+        setFilterList(contactsData.filter((a) =>
+            a.name.includes(content)
+        ));
+    }
 
     return (
         <>
@@ -46,20 +55,11 @@ function ChatScreen() {
                             </ManuWrapper>
                         </NavIcons>
                     </HeaderBox>
-                    <SearchInput/>
+                    <SearchInput doSearch={doSearch}/>
 
-                    <ListGroupOfContacts>
-                        <UserInList/>
-                        <UserInList/>
-                        <UserInList/>
-                        <UserInList/>
-                        <UserInList/>
-                        <UserInList/>
-                        <UserInList/>
-                        <UserInList/>
-                    </ListGroupOfContacts>
+                    <ListGroupOfContacts filter={filterList} />
+
                 </ChatSpace>
-
                 <ChatSpaceMsges>
                     <ChatSpaceHeader/>
                     <MsgWrapperScroll>
@@ -76,21 +76,6 @@ function ChatScreen() {
                                 University.
                             </UserSelfMsg>
 
-                            <ContactResponseMsg>
-                                Cool Man!!
-                            </ContactResponseMsg>
-
-                            <UserSelfMsg>
-                                See you in AP2!!
-                            </UserSelfMsg>
-
-                            <ContactResponseMsg>
-                                Bye!
-                            </ContactResponseMsg>
-
-                            <UserSelfMsg>
-                                See you.
-                            </UserSelfMsg>
 
                         </MsgScrollerGood>
                     </MsgWrapperScroll>
