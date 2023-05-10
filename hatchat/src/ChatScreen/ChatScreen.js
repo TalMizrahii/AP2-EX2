@@ -78,7 +78,6 @@ function ChatScreen() {
                                 University.
                             </UserSelfMsg>
 
-
                         </MsgScrollerGood>
                     </MsgWrapperScroll>
                 </ChatSpaceMsges>
