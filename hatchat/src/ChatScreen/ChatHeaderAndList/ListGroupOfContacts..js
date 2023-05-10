@@ -1,8 +1,10 @@
-function ListGroupOfContacts({children}){
+function ListGroupOfContacts({children}) {
     return (
-        <ul className="list-group">
-            {children}
-        </ul>
+        <div id="listScroll">
+            <ul className="list-group">
+                {children}
+            </ul>
+        </div>
     );
 }
 
