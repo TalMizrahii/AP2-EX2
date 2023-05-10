@@ -35,6 +35,8 @@ function ChatScreen() {
         ));
     }
 
+
+
     return (
         <>
             <GeneralBackground/>
