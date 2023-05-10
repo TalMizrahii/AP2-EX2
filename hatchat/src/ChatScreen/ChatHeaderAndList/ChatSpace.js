@@ -20,6 +20,9 @@ function ChatSpace() {
             a.name.includes(content)
         ));
     }
+    const addContact = function (contact) {
+        setFilterList((prevList) => [...prevList, contact]);
+    };
 
     return (<>
             <div className=" col-md-3 g-0 chatScreen">
@@ -28,7 +31,7 @@ function ChatSpace() {
                     <NavIcons>
                         <AddContactIcon/>
                         <ModalAddContactWrap>
-                            <ModalAddContact/>
+                            <ModalAddContact addContact={addContact}/>
                         </ModalAddContactWrap>
                         <ManuWrapper>
                             <DropItemListBtns>Switch user</DropItemListBtns>
@@ -39,7 +42,6 @@ function ChatSpace() {
                     </NavIcons>
                 </HeaderBox>
                 <SearchInput doSearch={doSearch}/>
-
                 <ListGroupOfContacts filter={filterList}/>
 
             </div>
