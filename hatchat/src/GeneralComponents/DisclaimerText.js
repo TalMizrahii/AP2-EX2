@@ -1,5 +1,4 @@
 import {Link} from 'react-router-dom';
-
 function DisclaimerText() {
     return (
         <div className="bottomDisclaimer">

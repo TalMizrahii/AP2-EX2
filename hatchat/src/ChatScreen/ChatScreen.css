@@ -13,15 +13,29 @@ body {
     position: fixed;
     padding: 0;
     text-align: center;
-    top: 45%;
-    height: 87%;
+    top: 50%;
+    /*height: 87%;*/
     transform: translate(-50%, -50%);
     background-color: #fff;
     border-radius: 15px;
+    height: calc(100vh - 70px);
 }
 
 .chatScreen {
-    border-radius: 15px !important;
+    border-bottom-left-radius: 15px !important;
+    overflow-y: hidden;
+    max-height: 100%;
+}
+
+.chatsList {
+    /*background-image: url('bg4.jpg');*/
+    background-color: #eaebf0;
+    margin: 0;
+    padding: 0;
+    bottom: 30px;
+    border-radius: 0 15px 15px 15px;
+    overflow-y: hidden;
+    max-height: 100%;
 }
 
 .chatScreen > .headerOfBox {
@@ -36,14 +50,6 @@ body {
     margin: 0;
 }
 
-
-.chatsList {
-    /*background-image: url('bg4.jpg');*/
-    background-color: #eaebf0;
-    margin: 0;
-    padding: 0;
-    border-radius: 15px;
-}
 
 .chatsList > .headerOfBox {
     border-top-right-radius: 15px;
@@ -303,7 +309,34 @@ body {
 }
 
 .DivWithScroll {
-    height: 86%;
+    height: 80%;
+    /*overflow: scroll;*/
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+.text-white {
+    /*width: 70%;*/
+    max-inline-size: 500px;
+    overflow-wrap: break-word;
+}
+
+.ContentMsg {
+    text-align: left;
+    max-inline-size: 600px;
+    overflow-wrap: break-word;
+}
+
+#LeftSideChatList {
+    position: fixed;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+#listScroll {
     overflow: scroll;
     overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 80%;
 }
