@@ -3,6 +3,7 @@ import Popup from "../GeneralComponents/Popup";
 
 function PasswordInputAndReq({ onChange }) {
     const [showPopup, setShowPopup] = useState(false);
+    const [password, setPassword] = useState('');
 
     const handleShowPopup = () => {
         setShowPopup(true);
@@ -10,6 +11,12 @@ function PasswordInputAndReq({ onChange }) {
 
     const handleHidePopup = () => {
         setShowPopup(false);
+    };
+
+    const handlePasswordChange = (e) => {
+        const newPassword = e.target.value;
+        setPassword(newPassword);
+        onChange(newPassword);
     };
 
     return (
@@ -21,10 +28,10 @@ function PasswordInputAndReq({ onChange }) {
                 placeholder="Password"
                 onFocus={handleShowPopup}
                 onBlur={handleHidePopup}
-               // onChange={onChange}
+                onChange={handlePasswordChange}
             />
             <label htmlFor="floatingPassword">Password</label>
-            {showPopup && <Popup/> }
+            {showPopup && <Popup password={password} />}
         </div>
     );
 }
