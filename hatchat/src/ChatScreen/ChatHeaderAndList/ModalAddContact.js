@@ -24,8 +24,8 @@ function ModalAddContact({addContact}) {
         // Reset the input fields
         setContactData({
             name: "",
-            bio: "",
-            lastSeen: "",
+            bio: "Hello",
+            lastSeen: "19/04/2023 22:55",
         });
     };
 
