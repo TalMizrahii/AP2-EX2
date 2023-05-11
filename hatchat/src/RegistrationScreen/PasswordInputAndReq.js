@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
-import PasswordRequirement from "./PasswordRequirement";
+import Popup from "../GeneralComponents/Popup";
 
 function PasswordInputAndReq({ onChange }) {
     const [showPopup, setShowPopup] = useState(false);
@@ -21,21 +19,12 @@ function PasswordInputAndReq({ onChange }) {
                 className="form-control"
                 id="floatingPassword"
                 placeholder="Password"
-                onChange={onChange}
                 onFocus={handleShowPopup}
                 onBlur={handleHidePopup}
+               // onChange={onChange}
             />
             <label htmlFor="floatingPassword">Password</label>
-
-            <Popup
-                open={showPopup}
-                onClose={handleHidePopup}
-                trigger={<div className="trigger-div" />}
-                position="right center"
-
-            >
-                <PasswordRequirement />
-            </Popup>
+            {showPopup && <Popup/> }
         </div>
     );
 }
