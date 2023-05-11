@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Popup from "../GeneralComponents/Popup";
 
-function PasswordInputAndReq({ onChange }) {
+function PasswordInputAndReq() {
     const [showPopup, setShowPopup] = useState(false);
     const [password, setPassword] = useState('');
 
@@ -16,7 +16,7 @@ function PasswordInputAndReq({ onChange }) {
     const handlePasswordChange = (e) => {
         const newPassword = e.target.value;
         setPassword(newPassword);
-        onChange(newPassword);
+
     };
 
     return (
