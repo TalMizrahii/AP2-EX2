@@ -17,7 +17,7 @@ function ConversationSpace() {
                 </ContactResponseMsg>
 
                 <UserSelfMsg>
-                    Got it! Thanks for the heads-up about the HATCHAT project for Advanced
+                    Got it! Thanks for the heads-up about the HAT CHAT project for Advanced
                     Programming 2 at Bar
                     Ilan
                     University.
