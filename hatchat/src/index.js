@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom
 import LoginScreen from './LoginScreen/LoginScreen';
 import ChatScreen from './ChatScreen/ChatScreen';
 import RegistrationScreen from './RegistrationScreen/RegistrationScreen';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const App = () => {
     return (
