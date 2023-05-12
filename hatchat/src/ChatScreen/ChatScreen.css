@@ -61,7 +61,6 @@ body {
 ------------------------------------------
 */
 
-
 .header {
     position: relative;
     display: flex;
@@ -288,6 +287,13 @@ body {
     width: 10%;
 }
 
+.btn-success{
+    --bs-btn-hover-bg: #207068;
+    background-color: #207068;
+
+}
+
+
 /*Chat Box and messages*/
 
 .chatImg {
@@ -339,4 +345,8 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     max-height: 80%;
+}
+
+.pe-3{
+    padding: 0;
 }

@@ -1,4 +1,6 @@
 function UserSelfMsg({children}){
+
+
     return (
         <div className="d-flex flex-row justify-content-start">
             <img className="chatImg"
@@ -8,8 +10,7 @@ function UserSelfMsg({children}){
                 <p className="ContentMsg small p-2 me-3 mb-1 text-white rounded-3 bg-primary">
                     {children}
                 </p>
-                <p className="small me-3 mb-3 rounded-3 text-muted float-end">12:00 PM | April
-                    20</p>
+                <p className="small me-3 mb-3 rounded-3 text-muted float-end">12:00 PM | April 20</p>
             </div>
         </div>
     );

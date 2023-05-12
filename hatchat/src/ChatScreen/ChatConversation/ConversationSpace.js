@@ -7,6 +7,8 @@ import UserSelfMsg from "./UserSelfMsg";
 
 function ConversationSpace() {
 
+
+
     return (<div className="col-md-9 g-0 chatsList">
         <ChatSpaceHeader/>
         <MsgWrapperScroll>
@@ -15,14 +17,12 @@ function ConversationSpace() {
                 <ContactResponseMsg>
                     Like and subscribe!
                 </ContactResponseMsg>
-
                 <UserSelfMsg>
                     Got it! Thanks for the heads-up about the HAT CHAT project for Advanced
                     Programming 2 at Bar
                     Ilan
                     University.
                 </UserSelfMsg>
-
             </MsgScrollerGood>
         </MsgWrapperScroll>
     </div>);

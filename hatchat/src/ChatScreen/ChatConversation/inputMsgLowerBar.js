@@ -29,7 +29,7 @@ function InputMsgLowerBar({ children }) {
                 value={textMsg}
                 onChange={handleInputChange}
             ></input>
-            <button type="button" className="btn btn-success" onClick={handleNewMsg} id="sendBtn">
+            <button type="button" className="sendMsgBtn btn btn-success" onClick={handleNewMsg} id="sendBtn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                      fill="currentColor"
                      className="bi bi-send" viewBox="0 0 16 16">
