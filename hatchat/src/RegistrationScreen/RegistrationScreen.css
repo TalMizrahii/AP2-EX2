@@ -6,11 +6,11 @@
     font-size: 70px;
 }
 
-.profilePictureLabel{
+.profilePictureLabel {
     float: left;
 }
 
-#subButton{
+#subButton {
     float: none;
     margin-top: 15px;
 }
@@ -32,6 +32,19 @@
     text-align: left;
 }
 
-.mb-3{
+.mb-3 {
     height: 50px;
 }
+
+/* CSS for valid password requirement */
+.valid {
+    color: green !important; /* Green text color */
+    background-color: transparent; /* Transparent background */
+}
+
+/* CSS for invalid password requirement */
+.invalid {
+    color: red !important; /* Red text color */
+    background-color: transparent; /* Transparent background */
+}
+
