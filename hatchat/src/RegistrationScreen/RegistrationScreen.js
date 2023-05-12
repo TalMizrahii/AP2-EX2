@@ -6,7 +6,7 @@ import ConfirmPasswordInput from "./ConfirmPasswordInput";
 import UserNameInput from "./UserNameInput";
 import ProfilePictureText from "./ProfilePictureText";
 import CreateAccountBtn from "./CreateAccountBtn";
-import Copyright from "../GeneralComponents/Copyright";
+import Copyright from "../GeneralComponents/Copyright"
 import { useState } from "react";
 import PasswordInputAndReq from "./PasswordInputAndReq";
 
