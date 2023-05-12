@@ -43,6 +43,9 @@ body {
 
 }
 
+.contactChat{
+    cursor: pointer;
+}
 
 .headerOfBox {
     width: 100%;

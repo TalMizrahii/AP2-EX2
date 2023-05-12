@@ -3,7 +3,7 @@ import UserInList from "./UserInList";
 function ListGroupOfContacts({filter}) {
 
     const filterList = filter.map((contact, key) =>{
-       return <UserInList key={key} contact={contact} />
+       return <UserInList  key={key} contact={contact} />
     });
 
     return (
