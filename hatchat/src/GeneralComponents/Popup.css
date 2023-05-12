@@ -5,7 +5,7 @@
     background-color:#ffffff;
     color: black;
     position: absolute;
-    left: 360px;
+    left: 102%;
     width: 150px;
     border-radius: 15px;
     animation: fadeInRight 1s ease-in-out;

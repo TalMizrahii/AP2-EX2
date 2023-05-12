@@ -11,22 +11,22 @@ import { useState } from "react";
 import PasswordInputAndReq from "./PasswordInputAndReq";
 
 function RegistrationScreen() {
-    const [showPopup, setShowPopup] = useState(false);
-
-    const handleShowPopup = () => {
-        setShowPopup(true);
-    };
-
-    const handleHidePopup = () => {
-        setShowPopup(false);
-    };
+    // const [showPopup, setShowPopup] = useState(false);
+    //
+    // const handleShowPopup = () => {
+    //     setShowPopup(true);
+    // };
+    //
+    // const handleHidePopup = () => {
+    //     setShowPopup(false);
+    // };
 
     return (
         <>
             <GeneralBackground />
             <RegisterBox>
                 <FullNameInput />
-                <PasswordInputAndReq onChange={handleShowPopup} />
+                <PasswordInputAndReq  />
                 <ConfirmPasswordInput />
                 <UserNameInput />
                 <ProfilePictureText />
