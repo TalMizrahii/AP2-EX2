@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { users } from '../../DataBase/Database';
 
 function InputMsgLowerBar({ children, handleNewMessage }) {
     const [textMsg, setTextMsg] = useState('');
