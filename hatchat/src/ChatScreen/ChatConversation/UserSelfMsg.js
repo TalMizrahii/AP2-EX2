@@ -1,6 +1,6 @@
 import React from "react";
 
-function UserSelfMsg({ children }) {
+function UserSelfMsg({children}) {
     const currentDate = new Date();
     const formattedDate = currentDate.toLocaleString("en-US", {
         hour: "numeric",
