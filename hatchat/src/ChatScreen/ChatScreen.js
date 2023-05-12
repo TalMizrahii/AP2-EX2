@@ -6,10 +6,13 @@ import ChatSpace from "./ChatHeaderAndList/ChatSpace";
 import ConversationSpace from "./ChatConversation/ConversationSpace";
 import {useState} from "react";
 import contactsData from "../DataBase/ContactsData";
+import ContactMsg from "../DataBase/contactMsg";
+import contactMsg from "../DataBase/contactMsg";
 
 function ChatScreen() {
     const [searchContent, setSearchContent] = useState("");
     const [filteredContacts, setFilteredContacts] = useState(contactsData);
+    const [msgArray, setMsgArray] = useState(ContactMsg);
 
     const handleSearch = (content) => {
         setSearchContent(content);
@@ -28,6 +31,11 @@ function ChatScreen() {
         setFilteredContacts([...contactsData]);
     };
 
+    const handleNewMessage =(content) => {
+        ContactMsg.push(content);
+        setMsgArray([...contactMsg])
+    }
+
     return (
         <>
             <GeneralBackground/>
@@ -35,7 +43,7 @@ function ChatScreen() {
                 {/*Contains all components about the list of contacts and the search and menu functionality.*/}
                 <ChatSpace handleSearch={handleSearch} addContact={addContact} filteredContacts={filteredContacts}/>
                 {/*Contains all components about the conversation with the contacts*/}
-                <ConversationSpace/>
+                <ConversationSpace msgArray={msgArray} handleNewMessage={handleNewMessage}/>
             </GeneralContainer>
         </>
     );

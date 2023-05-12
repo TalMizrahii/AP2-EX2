@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { users } from '../../DataBase/Database';
 
-function InputMsgLowerBar({ children }) {
+function InputMsgLowerBar({ children, handleNewMessage}) {
     const [textMsg, setTextMsg] = useState('');
 
     const handleNewMsg = (event) => {
         event.preventDefault();
 
-        // Perform actions with the user input
-        console.log(textMsg);
+        handleNewMessage(textMsg);
 
         // Clear the input field after sending the message
         setTextMsg('');
@@ -16,6 +15,13 @@ function InputMsgLowerBar({ children }) {
 
     const handleInputChange = (event) => {
         setTextMsg(event.target.value);
+    };
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            handleNewMsg(event);
+        }
     };
 
     return (
@@ -28,8 +34,9 @@ function InputMsgLowerBar({ children }) {
                 placeholder="Enter message"
                 value={textMsg}
                 onChange={handleInputChange}
+                onKeyDown={handleKeyDown}
             ></input>
-            <button type="button" className="sendMsgBtn btn btn-success" onClick={handleNewMsg} id="sendBtn">
+            <button type="button" className="sendMsgBtn btn btn-success"  onClick={handleNewMsg} id="sendBtn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                      fill="currentColor"
                      className="bi bi-send" viewBox="0 0 16 16">
