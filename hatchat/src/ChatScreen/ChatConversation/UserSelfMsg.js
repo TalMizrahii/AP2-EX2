@@ -3,7 +3,7 @@ import React from "react";
 function UserSelfMsg({msg, currentContact}) {
 
     return (
-        <div className="d-flex flex-row justify-content-start">
+        <div className="chatText d-flex flex-row justify-content-start">
             <img
                 className="chatImg"
                 src={currentContact.profilePic}

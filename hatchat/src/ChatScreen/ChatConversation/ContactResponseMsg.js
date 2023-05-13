@@ -2,7 +2,7 @@ function ContactResponseMsg({ children, timestamp }) {
 
 
     return (
-        <div className="d-flex flex-row justify-content-end">
+        <div className="chatText d-flex flex-row justify-content-end">
             <div>
                 <p className="ContentMsg small p-2 ms-3 mb-1 rounded-3" style={{ backgroundColor: '#f5f6f7' }}>
                     {children}
