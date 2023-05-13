@@ -11,7 +11,7 @@ function ChatSpace({handleSearch, addContact, filteredContacts, handleContactSwi
             <div className="col-md-3 g-0 chatScreen">
                 <HeaderBox>
                     <UserImageLeftTopCorner/>
-                    <NavIcons addContact={addContact} />
+                    <NavIcons filteredContacts={filteredContacts} addContact={addContact} />
                 </HeaderBox>
                 <SearchInput handleSearch={handleSearch}/>
                 <ListGroupOfContacts handleContactSwitch={handleContactSwitch} filter={filteredContacts}/>

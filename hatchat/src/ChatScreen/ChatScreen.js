@@ -49,7 +49,6 @@ function ChatScreen() {
     };
 
     const handleContactSwitch = (content) => {
-        console.log(content);
         setCurrentContactId(content);
     }
 

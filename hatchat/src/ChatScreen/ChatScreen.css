@@ -219,6 +219,9 @@ body {
     display: none;
 }
 
+.modalInput{
+    padding: 5px;
+}
 #exampleModalLabel .modal-title-background {
     background-color: white;
 }

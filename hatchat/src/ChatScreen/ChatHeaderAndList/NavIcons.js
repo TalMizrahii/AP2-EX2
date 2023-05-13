@@ -1,15 +1,15 @@
 import AddContactIcon from "./AddContactIcon";
-import ModalAddContactWrap from "./ModalAddContactWrap";
-import ModalAddContact from "./ModalAddContact";
+import ModalAddContactWrap from "./ModalRelated/ModalAddContactWrap";
+import ModalAddContact from "./ModalRelated/ModalAddContact";
 import ManuWrapper from "./ManuWraper";
 import React from "react";
 
-function NavIcons({addContact}) {
+function NavIcons({addContact, filteredContacts}) {
     return (
         <div className="nav-icons">
             <AddContactIcon/>
             <ModalAddContactWrap>
-                <ModalAddContact addContact={addContact}/>
+                <ModalAddContact filteredContacts={filteredContacts} addContact={addContact}/>
             </ModalAddContactWrap>
             <ManuWrapper/>
         </div>
