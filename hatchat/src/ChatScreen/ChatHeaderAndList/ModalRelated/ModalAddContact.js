@@ -44,7 +44,7 @@ function ModalAddContact({ addContact, filteredContacts }) {
         }
 
         const profilePic = ProfilePicsPaths[index];
-        setIndex(index + 1);
+        setIndex((index + 1) % 5);
 
         // Assign the loaded image to the profilePic property
         const newContactData = {

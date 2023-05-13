@@ -35,12 +35,12 @@ function ConversationSpace({currentContact, handleNewMessage, currentContactId, 
             <MsgWrapperScroll>
                 <InputMsgLowerBar handleFirstNextMessage={handleFirstNextMessage}/>
                 <MsgScrollerGood>
-                    <ContactResponseMsg>
+                    <ContactResponseMsg currentContact={currentContact}>
                         Like and subscribe!
                     </ContactResponseMsg>
                     {contactsMsg[currentContactId] && contactsMsg[currentContactId].length > 0 ? (
                         contactsMsg[currentContactId].map((msg, index) => (
-                            <UserSelfMsg currentContact={currentContact} key={index} msg={{ ...msg, currentContactId }} />
+                            <UserSelfMsg  key={index} msg={{ ...msg, currentContactId }} />
                         ))
                     ) : (
                         <div>No messages to display</div>

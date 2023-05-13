@@ -6,7 +6,7 @@ function UserSelfMsg({msg, currentContact}) {
         <div className="chatText d-flex flex-row justify-content-start">
             <img
                 className="chatImg"
-                src={currentContact.profilePic}
+                src="https://images.squarespace-cdn.com/content/v1/5c76de607fdcb8facd765433/1592926322727-OL8OFAUGXH0Q5XMF6AXC/IMG-4874.JPG"
                 alt="avatar 1"
             />
             <div>
