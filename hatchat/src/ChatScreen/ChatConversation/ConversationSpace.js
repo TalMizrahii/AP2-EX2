@@ -6,7 +6,7 @@ import ContactResponseMsg from "./ContactResponseMsg";
 import UserSelfMsg from "./UserSelfMsg";
 import ContactMsg from "../../DataBase/contactMsg";
 
-function ConversationSpace({handleNewMessage, currentContactId, contactsMsg}) {
+function ConversationSpace({currentContact, handleNewMessage, currentContactId, contactsMsg}) {
 
     const handleFirstNextMessage = (content) => {
         if(currentContactId === -1){
@@ -40,7 +40,7 @@ function ConversationSpace({handleNewMessage, currentContactId, contactsMsg}) {
                     </ContactResponseMsg>
                     {contactsMsg[currentContactId] && contactsMsg[currentContactId].length > 0 ? (
                         contactsMsg[currentContactId].map((msg, index) => (
-                            <UserSelfMsg key={index} msg={{ ...msg, currentContactId }} />
+                            <UserSelfMsg currentContact={currentContact} key={index} msg={{ ...msg, currentContactId }} />
                         ))
                     ) : (
                         <div>No messages to display</div>

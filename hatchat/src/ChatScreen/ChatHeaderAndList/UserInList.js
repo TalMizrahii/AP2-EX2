@@ -1,4 +1,4 @@
- function UserInList({ contact, handleContactSwitch }) {
+ function UserInList({contact, handleContactSwitch }) {
         const handleClick = () => {
             handleContactSwitch(contact.id);
         };
@@ -7,7 +7,7 @@
         <li className="contactChat list-group-item list-group-item-action" onClick={handleClick}>
             <div className="user-img">
                 <img className="dp"
-                     src="https://t4.ftcdn.net/jpg/00/97/58/97/360_F_97589769_t45CqXyzjz0KXwoBZT9PRaWGHRk5hQqQ.jpg"
+                     src={contact.profilePic}
                      alt=""></img>
             </div>
             <div className="userName">{contact.name}</div>

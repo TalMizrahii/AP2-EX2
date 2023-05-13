@@ -1,10 +1,13 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import ModalInputIdOrName from "./ModalInputIdOrName";
 import AddContactBtn from "./AddContactBtn";
 import CloseModalBtn from "./CloseModalBtn";
 import ModalTitle from "./ModalTitle";
+import ProfilePicsPaths from "./ProfilePicsPaths";
 
-function ModalAddContact({addContact, filteredContacts}) {
+function ModalAddContact({ addContact, filteredContacts }) {
+    const [index, setIndex] = useState(0);
+
     const [contactData, setContactData] = useState({
         id: null,
         name: "",
@@ -14,10 +17,10 @@ function ModalAddContact({addContact, filteredContacts}) {
     });
 
     const handleChange = (event) => {
-        const {name, value} = event.target;
+        const { name, value } = event.target;
         setContactData((prevData) => ({
             ...prevData,
-            [name]: value,
+            [name]: value
         }));
     };
 
@@ -36,11 +39,20 @@ function ModalAddContact({addContact, filteredContacts}) {
             (contact) => contact.id === contactData.id
         );
         if (existingContact) {
-            console.log("1")
+            console.log("1");
             return;
         }
 
-        addContact(contactData);
+        const profilePic = ProfilePicsPaths[index];
+        setIndex(index + 1);
+
+        // Assign the loaded image to the profilePic property
+        const newContactData = {
+            ...contactData,
+            profilePic
+        };
+
+        addContact(newContactData);
         // Reset the input fields
         setContactData({
             id: null,
@@ -55,8 +67,9 @@ function ModalAddContact({addContact, filteredContacts}) {
         return /^\d+$/.test(value);
     };
 
-    return (<>
-            <ModalTitle/>
+    return (
+        <>
+            <ModalTitle />
             <div className="modal-body">
                 <ModalInputIdOrName
                     label="Contact's name"
@@ -74,8 +87,8 @@ function ModalAddContact({addContact, filteredContacts}) {
                 />
             </div>
             <div className="modal-footer">
-                <CloseModalBtn/>
-                <AddContactBtn handleAddContact={handleAddContact}/>
+                <CloseModalBtn />
+                <AddContactBtn handleAddContact={handleAddContact} />
             </div>
         </>
     );

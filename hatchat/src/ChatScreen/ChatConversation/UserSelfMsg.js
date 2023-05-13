@@ -1,11 +1,12 @@
 import React from "react";
 
-function UserSelfMsg({msg}) {
+function UserSelfMsg({msg, currentContact}) {
+
     return (
         <div className="d-flex flex-row justify-content-start">
             <img
                 className="chatImg"
-                src="https://images.squarespace-cdn.com/content/v1/5c76de607fdcb8facd765433/1592926322727-OL8OFAUGXH0Q5XMF6AXC/IMG-4874.JPG"
+                src={currentContact.profilePic}
                 alt="avatar 1"
             />
             <div>

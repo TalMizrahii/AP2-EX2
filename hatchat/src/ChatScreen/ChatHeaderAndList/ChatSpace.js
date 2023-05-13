@@ -4,7 +4,7 @@ import NavIcons from "./NavIcons";
 import SearchInput from "./SearchInput";
 import ListGroupOfContacts from "./ListGroupOfContacts.";
 
-function ChatSpace({handleSearch, addContact, filteredContacts, handleContactSwitch}) {
+function ChatSpace({ handleSearch, addContact, filteredContacts, handleContactSwitch}) {
 
     return (
         <>

@@ -52,6 +52,9 @@ function ChatScreen() {
         setCurrentContactId(content);
     }
 
+    console.log(contactsData)
+    let currentContact = contactsData.find((contact) => contact.id === currentContactId);
+
     return (
         <>
             <GeneralBackground/>
@@ -60,7 +63,7 @@ function ChatScreen() {
                 <ChatSpace handleContactSwitch={handleContactSwitch} handleSearch={handleSearch} addContact={addContact}
                            filteredContacts={filteredContacts}/>
                 {/*Contains all components about the conversation with the contacts*/}
-                <ConversationSpace currentContactId={currentContactId} contactsMsg={contactsMsg} handleNewMessage={handleNewMessage}/>
+                <ConversationSpace currentContact={currentContact} currentContactId={currentContactId} contactsMsg={contactsMsg} handleNewMessage={handleNewMessage}/>
             </GeneralContainer>
         </>
     );
