@@ -1,14 +1,6 @@
 import React from "react";
 
-function UserSelfMsg({children}) {
-    const currentDate = new Date();
-    const formattedDate = currentDate.toLocaleString("en-US", {
-        hour: "numeric",
-        minute: "numeric",
-        month: "long",
-        day: "numeric",
-    });
-
+function UserSelfMsg({msg}) {
     return (
         <div className="d-flex flex-row justify-content-start">
             <img
@@ -18,10 +10,9 @@ function UserSelfMsg({children}) {
             />
             <div>
                 <p className="ContentMsg small p-2 me-3 mb-1 text-white rounded-3 bg-primary">
-                    {children}
+                    {msg.text}
                 </p>
-                <p className="small me-3 mb-3 rounded-3 text-muted float-end">
-                    {formattedDate}
+                <p className="small me-3 mb-3 rounded-3 text-muted float-end"> {msg.timeAndDate}
                 </p>
             </div>
         </div>

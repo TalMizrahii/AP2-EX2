@@ -1,14 +1,15 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-function ModalAddContact({addContact}) {
+function ModalAddContact({ addContact }) {
     const [contactData, setContactData] = useState({
         name: "",
         bio: "Hello",
         lastSeen: "19/04/2023 22:55",
+        MsgData: [],
     });
 
     const handleChange = (event) => {
-        const {name, value} = event.target;
+        const { name, value } = event.target;
 
         setContactData((prevData) => ({
             ...prevData,
@@ -17,7 +18,7 @@ function ModalAddContact({addContact}) {
     };
 
     const handleAddContact = () => {
-        if(contactData.name === ""){
+        if (contactData.name === "") {
             return;
         }
         addContact(contactData);
@@ -26,6 +27,7 @@ function ModalAddContact({addContact}) {
             name: "",
             bio: "Hello",
             lastSeen: "19/04/2023 22:55",
+            MsgData: [],
         });
     };
 

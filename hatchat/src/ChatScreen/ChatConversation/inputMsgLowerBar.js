@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
 
-function InputMsgLowerBar({ children, handleNewMessage }) {
+function InputMsgLowerBar({ handleNewMessage }) {
     const [textMsg, setTextMsg] = useState('');
 
     const handleNewMsg = (event) => {
         event.preventDefault();
-
         if (textMsg.trim() !== '') {
-            handleNewMessage(textMsg);
+            const sentDate = new Date(Date.now());
+            const formattedDate = sentDate.toLocaleString("en-US", {
+                hour: "numeric",
+                minute: "numeric",
+                month: "long",
+                day: "numeric",
+            });
+
+            handleNewMessage({
+                text: textMsg,
+                timeAndDate: formattedDate.toString(),
+            });
 
             // Clear the input field after sending the message
             setTextMsg('');

@@ -6,13 +6,13 @@ import ChatSpace from "./ChatHeaderAndList/ChatSpace";
 import ConversationSpace from "./ChatConversation/ConversationSpace";
 import {useState} from "react";
 import contactsData from "../DataBase/ContactsData";
-import ContactMsg from "../DataBase/contactMsg";
-import contactMsg from "../DataBase/contactMsg";
+// import ContactMsg from "../DataBase/contactMsg";
+// import contactMsg from "../DataBase/contactMsg";
 
 function ChatScreen() {
     const [searchContent, setSearchContent] = useState("");
     const [filteredContacts, setFilteredContacts] = useState(contactsData);
-    const [msgArray, setMsgArray] = useState(ContactMsg);
+    const [currentContact, setCurrentContact] = useState({ MsgData: [] });
 
     const handleSearch = (content) => {
         setSearchContent(content);
@@ -26,24 +26,39 @@ function ChatScreen() {
         }
     };
 
+    const handleContactChoice = (content) => {
+        const selectedContact = filteredContacts.find((contact) => contact.name === content.name);
+        setCurrentContact(selectedContact);
+    };
+
+
     const addContact = (contact) => {
         contactsData.push(contact);
         setFilteredContacts([...contactsData]);
+        handleContactChoice(contact);
     };
 
-    const handleNewMessage =(content) => {
-        ContactMsg.push(content);
-        setMsgArray([...contactMsg])
-    }
+    const handleNewMessage = (content) => {
+        if (!currentContact) {
+            return;
+        }
+
+        setCurrentContact((prevContact) => ({
+            ...prevContact,
+            MsgData: [...prevContact.MsgData, content],
+        }));
+    };
+
 
     return (
         <>
             <GeneralBackground/>
             <GeneralContainer>
                 {/*Contains all components about the list of contacts and the search and menu functionality.*/}
-                <ChatSpace handleSearch={handleSearch} addContact={addContact} filteredContacts={filteredContacts}/>
+                <ChatSpace handleContactChoice={handleContactChoice} handleSearch={handleSearch} addContact={addContact}
+                           filteredContacts={filteredContacts}/>
                 {/*Contains all components about the conversation with the contacts*/}
-                <ConversationSpace msgArray={msgArray} handleNewMessage={handleNewMessage}/>
+                <ConversationSpace currentContact={currentContact} handleNewMessage={handleNewMessage}/>
             </GeneralContainer>
         </>
     );
