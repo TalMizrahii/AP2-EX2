@@ -1,9 +1,9 @@
 import UserInList from "./UserInList";
 
-function ListGroupOfContacts({filter, handleContactChoice}) {
+function ListGroupOfContacts({filter, handleContactSwitch}) {
 
     const filterList = filter.map((contact, key) =>{
-       return <UserInList handleContactChoice={handleContactChoice} key={key} contact={contact} />
+       return <UserInList handleContactSwitch={handleContactSwitch}  key={key} contact={contact} />
     });
 
     return (

@@ -6,13 +6,13 @@ import ChatSpace from "./ChatHeaderAndList/ChatSpace";
 import ConversationSpace from "./ChatConversation/ConversationSpace";
 import {useState} from "react";
 import contactsData from "../DataBase/ContactsData";
-// import ContactMsg from "../DataBase/contactMsg";
-// import contactMsg from "../DataBase/contactMsg";
+import ContactMsg from "../DataBase/contactMsg";
 
 function ChatScreen() {
     const [searchContent, setSearchContent] = useState("");
     const [filteredContacts, setFilteredContacts] = useState(contactsData);
-    const [currentContact, setCurrentContact] = useState({ MsgData: [] });
+    const [contactsMsg, setContactMsg] = useState(ContactMsg);
+    const [currentContactId, setCurrentContactId] = useState(-1);
 
     const handleSearch = (content) => {
         setSearchContent(content);
@@ -26,39 +26,42 @@ function ChatScreen() {
         }
     };
 
-    const handleContactChoice = (content) => {
-        const selectedContact = filteredContacts.find((contact) => contact.name === content.name);
-        setCurrentContact(selectedContact);
-    };
-
-
     const addContact = (contact) => {
         contactsData.push(contact);
         setFilteredContacts([...contactsData]);
-        handleContactChoice(contact);
+        setCurrentContactId(contact.id);
     };
 
     const handleNewMessage = (content) => {
-        if (!currentContact) {
-            return;
-        }
+        const newMessage = {
+            text: content.text,
+            timeAndDate: content.timeAndDate,
+        };
 
-        setCurrentContact((prevContact) => ({
-            ...prevContact,
-            MsgData: [...prevContact.MsgData, content],
-        }));
+        setContactMsg((prevContactMsg) => {
+            const updatedContactMsg = { ...prevContactMsg };
+            updatedContactMsg[currentContactId] = [
+                ...(updatedContactMsg[currentContactId] || []),
+                newMessage
+            ];
+            return updatedContactMsg;
+        });
     };
 
+    const handleContactSwitch = (content) => {
+        console.log(content);
+        setCurrentContactId(content);
+    }
 
     return (
         <>
             <GeneralBackground/>
             <GeneralContainer>
                 {/*Contains all components about the list of contacts and the search and menu functionality.*/}
-                <ChatSpace handleContactChoice={handleContactChoice} handleSearch={handleSearch} addContact={addContact}
+                <ChatSpace handleContactSwitch={handleContactSwitch} handleSearch={handleSearch} addContact={addContact}
                            filteredContacts={filteredContacts}/>
                 {/*Contains all components about the conversation with the contacts*/}
-                <ConversationSpace currentContact={currentContact} handleNewMessage={handleNewMessage}/>
+                <ConversationSpace currentContactId={currentContactId} contactsMsg={contactsMsg} handleNewMessage={handleNewMessage}/>
             </GeneralContainer>
         </>
     );

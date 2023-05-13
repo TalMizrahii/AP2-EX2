@@ -4,14 +4,23 @@ import InputMsgLowerBar from "./inputMsgLowerBar";
 import MsgScrollerGood from "./MsgScrollerGood";
 import ContactResponseMsg from "./ContactResponseMsg";
 import UserSelfMsg from "./UserSelfMsg";
+import ContactMsg from "../../DataBase/contactMsg";
 
-function ConversationSpace({ handleNewMessage, currentContact }) {
-    if (!currentContact) {
+function ConversationSpace({handleNewMessage, currentContactId, contactsMsg}) {
+
+    const handleFirstNextMessage = (content) => {
+        if(currentContactId === -1){
+            return;
+        }
+        handleNewMessage(content);
+    }
+
+    if (currentContactId === -1) {
         return (
             <div className="col-md-9 g-0 chatsList">
-                <ChatSpaceHeader />
+                <ChatSpaceHeader/>
                 <MsgWrapperScroll>
-                    <InputMsgLowerBar handleNewMessage={handleNewMessage} />
+                    <InputMsgLowerBar handleFirstNextMessage={handleFirstNextMessage}/>
                     <MsgScrollerGood>
                         <div> No messages to display</div>
                     </MsgScrollerGood>
@@ -22,16 +31,16 @@ function ConversationSpace({ handleNewMessage, currentContact }) {
 
     return (
         <div className="col-md-9 g-0 chatsList">
-            <ChatSpaceHeader />
+            <ChatSpaceHeader/>
             <MsgWrapperScroll>
-                <InputMsgLowerBar handleNewMessage={handleNewMessage} />
+                <InputMsgLowerBar handleFirstNextMessage={handleFirstNextMessage}/>
                 <MsgScrollerGood>
                     <ContactResponseMsg>
                         Like and subscribe!
                     </ContactResponseMsg>
-                    {currentContact.MsgData && currentContact.MsgData.length > 0 ? (
-                        currentContact.MsgData.map((msg, index) => (
-                            <UserSelfMsg key={index} msg={msg} />
+                    {contactsMsg[currentContactId] && contactsMsg[currentContactId].length > 0 ? (
+                        contactsMsg[currentContactId].map((msg, index) => (
+                            <UserSelfMsg key={index} msg={{ ...msg, currentContactId }} />
                         ))
                     ) : (
                         <div>No messages to display</div>
@@ -43,4 +52,3 @@ function ConversationSpace({ handleNewMessage, currentContact }) {
 }
 
 export default ConversationSpace;
-

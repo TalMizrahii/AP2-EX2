@@ -4,8 +4,7 @@ import NavIcons from "./NavIcons";
 import SearchInput from "./SearchInput";
 import ListGroupOfContacts from "./ListGroupOfContacts.";
 
-function ChatSpace({handleSearch, addContact, filteredContacts, handleContactChoice}) {
-
+function ChatSpace({handleSearch, addContact, filteredContacts, handleContactSwitch}) {
 
     return (
         <>
@@ -15,7 +14,7 @@ function ChatSpace({handleSearch, addContact, filteredContacts, handleContactCho
                     <NavIcons addContact={addContact} />
                 </HeaderBox>
                 <SearchInput handleSearch={handleSearch}/>
-                <ListGroupOfContacts handleContactChoice={handleContactChoice} filter={filteredContacts}/>
+                <ListGroupOfContacts handleContactSwitch={handleContactSwitch} filter={filteredContacts}/>
             </div>
         </>
     );

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-function InputMsgLowerBar({ handleNewMessage }) {
+function InputMsgLowerBar({ handleFirstNextMessage }) {
+
     const [textMsg, setTextMsg] = useState('');
 
     const handleNewMsg = (event) => {
@@ -14,7 +15,7 @@ function InputMsgLowerBar({ handleNewMessage }) {
                 day: "numeric",
             });
 
-            handleNewMessage({
+            handleFirstNextMessage({
                 text: textMsg,
                 timeAndDate: formattedDate.toString(),
             });
