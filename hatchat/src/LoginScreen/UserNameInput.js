@@ -1,4 +1,4 @@
-function UserNameInput({ onChange }) {
+function UserNameInput({ handleUserNameClick }) {
     return (
         <div className="form-floating mb-3">
             <input
@@ -6,7 +6,7 @@ function UserNameInput({ onChange }) {
                 className="form-control"
                 id="floatingInput"
                 placeholder="name@example.com"
-                onChange={onChange}
+                onClick={handleUserNameClick}
             />
             <label htmlFor="floatingInput">Username</label>
         </div>

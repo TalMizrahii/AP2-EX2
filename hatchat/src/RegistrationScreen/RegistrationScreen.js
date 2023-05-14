@@ -1,47 +1,51 @@
+import React, { useState } from 'react';
 import './RegistrationScreen.css';
-import GeneralBackground from "../GeneralComponents/GeneralBackground";
-import RegisterBox from "../GeneralComponents/RegisterBox";
-import UserNameInput from "../LoginScreen/UserNameInput";
-import ConfirmPasswordInput from "./ConfirmPasswordInput";
-import FullNameInput from "./FullNameInput";
-import ProfilePictureText from "./ProfilePictureText";
-import CreateAccountBtn from "./CreateAccountBtn";
-import Copyright from "../GeneralComponents/Copyright";
-import { useState } from "react";
-import PasswordInputAndReq from "./PasswordInputAndReq";
+import GeneralBackground from '../GeneralComponents/GeneralBackground';
+import RegisterBox from '../GeneralComponents/RegisterBox';
+import UserNameInput from '../LoginScreen/UserNameInput';
+import ConfirmPasswordInput from './ConfirmPasswordInput';
+import FullNameInput from './FullNameInput';
+import ProfilePictureText from './ProfilePictureText';
+import CreateAccountBtn from './CreateAccountBtn';
+import Copyright from '../GeneralComponents/Copyright';
+import PasswordInputAndReq from './PasswordInputAndReq';
 import { users } from '../DataBase/Database';
 
-function RegistrationScreen({handleUserNameChange, handlePasswordChange,userName,password}) {
-
+function RegistrationScreen() {
     const [fullName, setFullName] = useState('');
-    const [profilePicture, setProfilePicture] = useState('');
-    const [passwordReg, setPasswordReg] = useState('');
-    const [userNameReq, setUserNameReq] = useState('');
+    const [profilePicture, setProfilePicture] = useState(null);
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [userName, setUserName] = useState('');
+    const [isImageUploaded, setIsImageUploaded] = useState(false);
+
+    const handleUserNameChange = (e) => {
+        setUserName(e.target.value);
+    };
+
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+    };
 
     const handleFullNameChange = (e) => {
         setFullName(e.target.value);
     };
 
-
-
-    const handleProfilePictureChange = (e) => {
-        setProfilePicture(e.target.value);
-    };
-
-    const handlePasswordReg = (e) => {
-        setPasswordReg(e.target.value);
-        handlePasswordChange(passwordReg);
-    };
-
-    const handleUserNameReg = (e) => {
-        setUserNameReq(e.target.value);
-        handleUserNameChange(userNameReq);
+    const handleProfilePictureChange = (file) => {
+        setIsImageUploaded(true);
+        setProfilePicture(file);
     };
 
     const handleCreateAccount = () => {
-        const existingUser = users.find((user) => user.userName === userName);
-        if (existingUser) {
-            alert('Username already exists. Please choose a different username.');
+        if (
+            !fullName ||
+            !profilePicture ||
+            !password ||
+            !confirmPassword ||
+            !userName ||
+            !isImageUploaded
+        ) {
+            alert('Please fill in all the required fields.');
             return;
         }
 
@@ -53,25 +57,26 @@ function RegistrationScreen({handleUserNameChange, handlePasswordChange,userName
         };
 
         users.push(newUser);
-
-        console.log('User Data:', { fullName, userName, password, profilePicture });
+        console.log('New User:', newUser);
 
         setFullName('');
-        handleUserNameChange({ target: { value: '' } });
-        handlePasswordChange({ target: { value: '' } });
-        setProfilePicture('');
+        setPassword('');
+        setConfirmPassword('');
+        setUserName('');
+        setProfilePicture(null);
+        setIsImageUploaded(false);
     };
 
     return (
         <>
             <GeneralBackground />
             <RegisterBox>
-                <FullNameInput onChange={handleFullNameChange} />
-                <PasswordInputAndReq onChange={handlePasswordReg} password={passwordReg} />
-                <ConfirmPasswordInput password={passwordReg} />
-                <UserNameInput onChange={handleUserNameReg} />
-                <ProfilePictureText onChange={handleProfilePictureChange} />
-                <CreateAccountBtn onClick={handleCreateAccount} />
+                <FullNameInput handleFullNameClick={handleFullNameChange} />
+                <PasswordInputAndReq onChange={handlePasswordChange} password={password} />
+                <ConfirmPasswordInput password={password} />
+                <UserNameInput handleUserNameClick={handleUserNameChange} />
+                <ProfilePictureText handlePicClick={handleProfilePictureChange} />
+                <CreateAccountBtn handleCreate={handleCreateAccount} isImageUploaded={isImageUploaded} />
                 <Copyright />
             </RegisterBox>
         </>

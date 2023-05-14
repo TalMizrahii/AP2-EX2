@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function ProfilePictureText({ onChange }) {
-    const [selectedFile, setSelectedFile] = useState(null);
-
+function ProfilePictureText({ handlePicClick }) {
     const handleFileChange = (e) => {
-        setSelectedFile(e.target.files[0]);
-        const event = {
-            target: {
-                value: e.target.files[0],
-            },
-        };
-        onChange(event);
+        const file = e.target.files && e.target.files[0];
+        const regex = /([^\\s]+(\.(?:jpe?g|png|gif|bmp))$)/i;
+
+        if (file && regex.test(file.name)) {
+            handlePicClick(file);
+        } else {
+            alert('Please select a valid image file (JPG, JPEG, PNG, GIF, BMP).');
+            e.target.value = '';
+        }
     };
 
     return (
