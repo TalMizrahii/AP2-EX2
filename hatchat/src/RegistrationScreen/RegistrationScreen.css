@@ -43,7 +43,7 @@
 }
 
 /* CSS for invalid password requirement */
-.invalid {
+.invalid-requirement {
     color: red !important; /* Red text color */
     background-color: transparent; /* Transparent background */
 }

@@ -1,4 +1,4 @@
-function FullNameInput({ onChange }) {
+function UserNameInput({ onChange }) {
     return (
         <div className="form-floating mb-3">
             <input
@@ -14,4 +14,4 @@ function FullNameInput({ onChange }) {
 }
 
 
-export default FullNameInput;
+export default UserNameInput;
