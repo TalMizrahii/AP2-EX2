@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import Popup from "../GeneralComponents/Popup";
 
-function PasswordInputAndReq() {
+function PasswordInputAndReq({onChange,password}) {
     const [showPopup, setShowPopup] = useState(false);
-    const [password, setPassword] = useState('');
 
     const handleShowPopup = () => {
         setShowPopup(true);
@@ -13,11 +12,7 @@ function PasswordInputAndReq() {
         setShowPopup(false);
     };
 
-    const handlePasswordChange = (e) => {
-        const newPassword = e.target.value;
-        setPassword(newPassword);
 
-    };
 
 
     return (
@@ -29,7 +24,7 @@ function PasswordInputAndReq() {
                 placeholder="Password"
                 onFocus={handleShowPopup}
                 onBlur={handleHidePopup}
-                onChange={handlePasswordChange}
+                onChange={onChange}
             />
             <label htmlFor="floatingPassword">Password</label>
             {showPopup && <Popup password={password} />}

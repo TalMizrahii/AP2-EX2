@@ -1,7 +1,7 @@
 import './LoginScreen.css';
 import GeneralBackground from '../GeneralComponents/GeneralBackground';
 import LoginButton from "./LoginButton";
-import FullNameInput from "./FullNameInput";
+import UserNameInput from "./UserNameInput";
 import {useState} from 'react';
 import DisclaimerText from "../GeneralComponents/DisclaimerText";
 import RegisterBox from "../GeneralComponents/RegisterBox";
@@ -24,7 +24,7 @@ function LoginScreen() {
             <GeneralBackground/>
             <RegisterBox>
                 <form>
-                    <FullNameInput onChange={handleUsernameChange}/>
+                    <UserNameInput onChange={handleUsernameChange}/>
                     <PasswordInput onChange={handlePasswordChange}/>
                     <LoginButton username={username} password={password}/>
                     <DisclaimerText/>

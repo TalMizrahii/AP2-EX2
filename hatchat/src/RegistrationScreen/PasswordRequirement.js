@@ -34,7 +34,7 @@ function PasswordRequirement({ password }) {
                 {requirements.map((requirement, index) => (
                     <li
                         key={index}
-                        className={isValidRequirement(requirement) ? 'valid' : 'invalid'}
+                        className={isValidRequirement(requirement) ? 'valid' : 'invalid-requirement'}
                     >
                         {requirement.label}
                     </li>
