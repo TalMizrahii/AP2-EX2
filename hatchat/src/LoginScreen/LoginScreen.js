@@ -24,7 +24,7 @@ function LoginScreen() {
             <GeneralBackground/>
             <RegisterBox>
                 <form>
-                    <UserNameInput onChange={handleUsernameChange}/>
+                    <UserNameInput handleUserNameClick={handleUsernameChange}/>
                     <PasswordInput onChange={handlePasswordChange}/>
                     <LoginButton username={username} password={password}/>
                     <DisclaimerText/>

@@ -1,13 +1,14 @@
-import { useNavigate } from 'react-router-dom';
-import { users } from '../DataBase/Database';
+import {useNavigate} from 'react-router-dom';
+import {users} from '../DataBase/Database';
 
-function LoginButton({ username, password }) {
+function LoginButton({username, password}) {
+    console.log('Users Data:', users);
+
     const navigate = useNavigate();
 
     const handleLogin = (event) => {
         event.preventDefault();
-        const user = users.find((user) => user.username === username);
-
+        const user = users.find((user) => user.userName === username);
         if (user) {
             if (user.password === password) {
                 const userData = {
@@ -17,7 +18,13 @@ function LoginButton({ username, password }) {
                     profilePicture: user.profilePicture,
                 };
 
-                navigate('/chat', { state: { userData } });
+                navigate('/chat', {
+                    state: {
+                        fullName: user.fullName, userName: user.userName,
+                        userPassword: user.password,
+                        profilePicture: user.profilePicture
+                    }
+                });
             } else {
                 alert('Invalid password');
             }

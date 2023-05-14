@@ -7,10 +7,12 @@ import ConversationSpace from "./ChatConversation/ConversationSpace";
 import {useState} from "react";
 import contactsData from "../DataBase/ContactsData";
 import ContactMsg from "../DataBase/contactMsg";
+import {useLocation} from "react-router";
 
-function ChatScreen({userData}) {
-    const locationData = userData.state ? userData.state.userData : null;
-    console.log('User Data:', locationData);
+function ChatScreen() {
+    const {state}=useLocation();
+    const {fullName,userName,userPassword,profilePicture}=state;
+    console.log(fullName,userName,userPassword,profilePicture);
     const [searchContent, setSearchContent] = useState("");
     const [filteredContacts, setFilteredContacts] = useState(contactsData);
     const [contactsMsg, setContactMsg] = useState(ContactMsg);

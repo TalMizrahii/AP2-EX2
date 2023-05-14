@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './RegistrationScreen.css';
 import GeneralBackground from '../GeneralComponents/GeneralBackground';
 import RegisterBox from '../GeneralComponents/RegisterBox';
@@ -7,9 +7,40 @@ import ConfirmPasswordInput from './ConfirmPasswordInput';
 import FullNameInput from './FullNameInput';
 import ProfilePictureText from './ProfilePictureText';
 import CreateAccountBtn from './CreateAccountBtn';
-import Copyright from '../GeneralComponents/Copyright';
 import PasswordInputAndReq from './PasswordInputAndReq';
-import { users } from '../DataBase/Database';
+import {users} from '../DataBase/Database';
+import {useNavigate} from 'react-router-dom';
+
+const handleCreateAccount = (
+    fullName,
+    profilePicture,
+    password,
+    confirmPassword,
+    userName,
+    navigate
+) => {
+    if (
+        fullName === '' ||
+        profilePicture === null ||
+        password === '' ||
+        confirmPassword === '' ||
+        userName === ''
+    ) {
+        alert('Please fill in all the required fields.');
+        return;
+    }
+
+    const newUser = {
+        fullName,
+        userName,
+        password,
+        profilePicture,
+    };
+
+    users.push(newUser);
+
+    navigate('/');
+};
 
 function RegistrationScreen() {
     const [fullName, setFullName] = useState('');
@@ -18,6 +49,9 @@ function RegistrationScreen() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [userName, setUserName] = useState('');
     const [isImageUploaded, setIsImageUploaded] = useState(false);
+    const [passwordMatch, setPasswordMatch] = useState(false);
+
+    const navigate = useNavigate();
 
     const handleUserNameChange = (e) => {
         setUserName(e.target.value);
@@ -25,6 +59,11 @@ function RegistrationScreen() {
 
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
+        if (confirmPassword !== '' && e.target.value !== '' && confirmPassword === e.target.value) {
+            setPasswordMatch(true);
+        } else {
+            setPasswordMatch(false);
+        }
     };
 
     const handleFullNameChange = (e) => {
@@ -36,29 +75,18 @@ function RegistrationScreen() {
         setProfilePicture(file);
     };
 
-    const handleCreateAccount = () => {
-        if (
-            !fullName ||
-            !profilePicture ||
-            !password ||
-            !confirmPassword ||
-            !userName ||
-            !isImageUploaded
-        ) {
-            alert('Please fill in all the required fields.');
-            return;
+    const handleConfirmPasswordChange = (e) => {
+        const newConfirmPassword = e.target.value;
+        setConfirmPassword(newConfirmPassword);
+        if (newConfirmPassword !== '' && password !== '' && newConfirmPassword === password) {
+            setPasswordMatch(true);
+        } else {
+            setPasswordMatch(false);
         }
+    };
 
-        const newUser = {
-            fullName,
-            userName,
-            password,
-            profilePicture,
-        };
-
-        users.push(newUser);
-        console.log('New User:', newUser);
-
+    const handleCreateAccountClick = () => {
+        handleCreateAccount(fullName, profilePicture, password, confirmPassword, userName, navigate);
         setFullName('');
         setPassword('');
         setConfirmPassword('');
@@ -69,15 +97,18 @@ function RegistrationScreen() {
 
     return (
         <>
-            <GeneralBackground />
+            <GeneralBackground/>
             <RegisterBox>
-                <FullNameInput handleFullNameClick={handleFullNameChange} />
-                <PasswordInputAndReq onChange={handlePasswordChange} password={password} />
-                <ConfirmPasswordInput password={password} />
-                <UserNameInput handleUserNameClick={handleUserNameChange} />
-                <ProfilePictureText handlePicClick={handleProfilePictureChange} />
-                <CreateAccountBtn handleCreate={handleCreateAccount} isImageUploaded={isImageUploaded} />
-                <Copyright />
+                <FullNameInput handleFullNameClick={handleFullNameChange}/>
+                <PasswordInputAndReq onChange={handlePasswordChange} password={password}/>
+                <ConfirmPasswordInput
+                    password={password}
+                    handleConfirmPasswordChange={handleConfirmPasswordChange}
+                    confirmPassword={confirmPassword}
+                    passwordMatch={passwordMatch}/>
+                <UserNameInput handleUserNameClick={handleUserNameChange}/>
+                <ProfilePictureText handlePicClick={handleProfilePictureChange}/>
+                <CreateAccountBtn handleCreate={handleCreateAccountClick} isImageUploaded={isImageUploaded}/>
             </RegisterBox>
         </>
     );
