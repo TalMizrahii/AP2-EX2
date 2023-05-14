@@ -1,4 +1,3 @@
-
 function Copyright() {
     return (
         <div className="bottomCopyRight">

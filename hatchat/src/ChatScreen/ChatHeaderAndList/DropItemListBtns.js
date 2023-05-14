@@ -1,6 +1,6 @@
-function DropItemListBtns({children}){
+function DropItemListBtns(props){
     return (
-        <li><a className="dropdown-item" href="#">{children}</a></li>
+        <li><a className="dropdown-item" href="#">{props.title}</a></li>
     );
 
 }

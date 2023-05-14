@@ -4,28 +4,51 @@ import InputMsgLowerBar from "./inputMsgLowerBar";
 import MsgScrollerGood from "./MsgScrollerGood";
 import ContactResponseMsg from "./ContactResponseMsg";
 import UserSelfMsg from "./UserSelfMsg";
+import ContactMsg from "../../DataBase/contactMsg";
 
-function ConversationSpace() {
+function ConversationSpace({currentContact, handleNewMessage, currentContactId, contactsMsg}) {
 
-    return (<div className="col-md-9 g-0 chatsList">
-        <ChatSpaceHeader/>
-        <MsgWrapperScroll>
-            <InputMsgLowerBar/>
-            <MsgScrollerGood>
-                <ContactResponseMsg>
-                    Like and subscribe!
-                </ContactResponseMsg>
+    const handleFirstNextMessage = (content) => {
+        if(currentContactId === -1){
+            return;
+        }
+        handleNewMessage(content);
+    }
 
-                <UserSelfMsg>
-                    Got it! Thanks for the heads-up about the HAT CHAT project for Advanced
-                    Programming 2 at Bar
-                    Ilan
-                    University.
-                </UserSelfMsg>
+    if (currentContactId === -1) {
+        return (
+            <div className="col-md-9 g-0 chatsList">
+                <ChatSpaceHeader/>
+                <MsgWrapperScroll>
+                    <InputMsgLowerBar handleFirstNextMessage={handleFirstNextMessage}/>
+                    <MsgScrollerGood>
+                        <div> No messages to display</div>
+                    </MsgScrollerGood>
+                </MsgWrapperScroll>
+            </div>
+        );
+    }
 
-            </MsgScrollerGood>
-        </MsgWrapperScroll>
-    </div>);
+    return (
+        <div className="col-md-9 g-0 chatsList">
+            <ChatSpaceHeader/>
+            <MsgWrapperScroll>
+                <InputMsgLowerBar handleFirstNextMessage={handleFirstNextMessage}/>
+                <MsgScrollerGood>
+                    <ContactResponseMsg currentContact={currentContact}>
+                        Like and subscribe!
+                    </ContactResponseMsg>
+                    {contactsMsg[currentContactId] && contactsMsg[currentContactId].length > 0 ? (
+                        contactsMsg[currentContactId].map((msg, index) => (
+                            <UserSelfMsg  key={index} msg={{ ...msg, currentContactId }} />
+                        ))
+                    ) : (
+                        <div>No messages to display</div>
+                    )}
+                </MsgScrollerGood>
+            </MsgWrapperScroll>
+        </div>
+    );
 }
 
 export default ConversationSpace;

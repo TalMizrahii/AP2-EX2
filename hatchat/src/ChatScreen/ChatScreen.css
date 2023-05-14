@@ -43,6 +43,9 @@ body {
 
 }
 
+.contactChat{
+    cursor: pointer;
+}
 
 .headerOfBox {
     width: 100%;
@@ -60,7 +63,6 @@ body {
 
 ------------------------------------------
 */
-
 
 .header {
     position: relative;
@@ -217,6 +219,9 @@ body {
     display: none;
 }
 
+.modalInput{
+    padding: 5px;
+}
 #exampleModalLabel .modal-title-background {
     background-color: white;
 }
@@ -269,6 +274,10 @@ body {
     z-index: 2;
 }
 
+.chatText{
+    height: 5rem ;
+}
+
 .bi-emoji-smile {
     margin-top: 5px;
     float: left;
@@ -287,6 +296,13 @@ body {
     float: right;
     width: 10%;
 }
+
+.btn-success{
+    --bs-btn-hover-bg: #207068;
+    background-color: #207068;
+
+}
+
 
 /*Chat Box and messages*/
 
@@ -326,6 +342,8 @@ body {
     text-align: left;
     max-inline-size: 600px;
     overflow-wrap: break-word;
+    margin: 0 !important;
+    padding: 0;
 }
 
 #LeftSideChatList {
@@ -339,4 +357,23 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     max-height: 80%;
+}
+
+.chatWrap{
+    /*padding: 7px;*/
+    padding-top: 15px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+
+.pe-3{
+    padding: 0;
+}
+
+.pt-3{
+    padding: 0;
+}
+
+.small{
+    margin-bottom: 0 !important;
 }
