@@ -11,12 +11,6 @@ function LoginButton({username, password}) {
         const user = users.find((user) => user.userName === username);
         if (user) {
             if (user.password === password) {
-                const userData = {
-                    fullName: user.fullName,
-                    userName: user.userName,
-                    userPassword: user.password,
-                    profilePicture: user.profilePicture,
-                };
 
                 navigate('/chat', {
                     state: {
