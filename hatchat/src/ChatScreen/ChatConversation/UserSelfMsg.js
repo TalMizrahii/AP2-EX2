@@ -1,6 +1,6 @@
 import React from "react";
 
-function UserSelfMsg({msg, currentContact}) {
+function UserSelfMsg({msg, profilePicture}) {
 
     return (
         <div className="chatText d-flex flex-row justify-content-end">
@@ -13,7 +13,7 @@ function UserSelfMsg({msg, currentContact}) {
             </div>
             <img
                 className="chatImg"
-                src="https://images.squarespace-cdn.com/content/v1/5c76de607fdcb8facd765433/1592926322727-OL8OFAUGXH0Q5XMF6AXC/IMG-4874.JPG"
+                src={URL.createObjectURL(profilePicture)}
                 alt="avatar 1"
             />
         </div>
