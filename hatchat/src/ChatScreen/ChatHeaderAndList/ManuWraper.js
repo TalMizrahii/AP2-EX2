@@ -1,11 +1,11 @@
 import MenuBtn from "./MenuBtn";
 import DropItemListBtns from "./DropItemListBtns";
 import React from "react";
+import {useNavigate} from "react-router-dom";
 
-function ManuWrapper({children}) {
-
+function ManuWrapper() {
     const handleLogout = () => {
-        // Redirect to the desired URL
+
     };
 
     return (

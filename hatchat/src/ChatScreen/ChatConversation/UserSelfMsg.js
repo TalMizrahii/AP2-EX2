@@ -1,6 +1,6 @@
 import React from "react";
 
-function UserSelfMsg({profilePicture, msg}) {
+function UserSelfMsg({msg, profilePicture}) {
 
     return (
         <div className="chatText d-flex flex-row justify-content-end">
