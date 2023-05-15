@@ -13,6 +13,7 @@ function ChatScreen() {
     const {state}=useLocation();
     const {fullName,userName,userPassword,profilePicture}=state;
     console.log(fullName,userName,userPassword,profilePicture);
+
     const [searchContent, setSearchContent] = useState("");
     const [filteredContacts, setFilteredContacts] = useState(contactsData);
     const [contactsMsg, setContactMsg] = useState(ContactMsg);
@@ -64,10 +65,10 @@ function ChatScreen() {
             <GeneralBackground/>
             <GeneralContainer>
                 {/*Contains all components about the list of contacts and the search and menu functionality.*/}
-                <ChatSpace handleContactSwitch={handleContactSwitch} handleSearch={handleSearch} addContact={addContact}
+                <ChatSpace profilePicture={profilePicture} handleContactSwitch={handleContactSwitch} handleSearch={handleSearch} addContact={addContact}
                            filteredContacts={filteredContacts}/>
                 {/*Contains all components about the conversation with the contacts*/}
-                <ConversationSpace currentContact={currentContact} currentContactId={currentContactId}
+                <ConversationSpace profilePicture={profilePicture} currentContact={currentContact} currentContactId={currentContactId}
                                    contactsMsg={contactsMsg} handleNewMessage={handleNewMessage}/>
             </GeneralContainer>
         </>

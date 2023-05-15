@@ -4,13 +4,13 @@ import NavIcons from "./NavIcons";
 import SearchInput from "./SearchInput";
 import ListGroupOfContacts from "./ListGroupOfContacts.";
 
-function ChatSpace({ handleSearch, addContact, filteredContacts, handleContactSwitch}) {
+function ChatSpace({profilePicture, handleSearch, addContact, filteredContacts, handleContactSwitch}) {
 
     return (
         <>
             <div className="col-md-3 g-0 chatScreen">
                 <HeaderBox>
-                    <UserImageLeftTopCorner/>
+                    <UserImageLeftTopCorner profilePicture={profilePicture}/>
                     <NavIcons filteredContacts={filteredContacts} addContact={addContact} />
                 </HeaderBox>
                 <SearchInput handleSearch={handleSearch}/>
