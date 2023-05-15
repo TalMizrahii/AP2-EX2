@@ -1,4 +1,10 @@
-function UserNameInput({ onChange }) {
+import React from 'react';
+
+function UserNameInput({ handleUserNameClick }) {
+    const handleUserNameChange = (e) => {
+        handleUserNameClick(e);
+    };
+
     return (
         <div className="form-floating mb-3">
             <input
@@ -6,12 +12,11 @@ function UserNameInput({ onChange }) {
                 className="form-control"
                 id="floatingInput"
                 placeholder="name@example.com"
-                onChange={onChange}
+                onChange={handleUserNameChange}
             />
             <label htmlFor="floatingInput">Username</label>
         </div>
     );
 }
-
 
 export default UserNameInput;

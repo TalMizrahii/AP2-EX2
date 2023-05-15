@@ -7,8 +7,12 @@ import ConversationSpace from "./ChatConversation/ConversationSpace";
 import {useState} from "react";
 import contactsData from "../DataBase/ContactsData";
 import ContactMsg from "../DataBase/contactMsg";
+import {useLocation} from "react-router";
 
 function ChatScreen() {
+    const {state}=useLocation();
+    const {fullName,userName,userPassword,profilePicture}=state;
+    console.log(fullName,userName,userPassword,profilePicture);
     const [searchContent, setSearchContent] = useState("");
     const [filteredContacts, setFilteredContacts] = useState(contactsData);
     const [contactsMsg, setContactMsg] = useState(ContactMsg);
@@ -39,7 +43,7 @@ function ChatScreen() {
         };
 
         setContactMsg((prevContactMsg) => {
-            const updatedContactMsg = { ...prevContactMsg };
+            const updatedContactMsg = {...prevContactMsg};
             updatedContactMsg[currentContactId] = [
                 ...(updatedContactMsg[currentContactId] || []),
                 newMessage
@@ -63,7 +67,8 @@ function ChatScreen() {
                 <ChatSpace handleContactSwitch={handleContactSwitch} handleSearch={handleSearch} addContact={addContact}
                            filteredContacts={filteredContacts}/>
                 {/*Contains all components about the conversation with the contacts*/}
-                <ConversationSpace currentContact={currentContact} currentContactId={currentContactId} contactsMsg={contactsMsg} handleNewMessage={handleNewMessage}/>
+                <ConversationSpace currentContact={currentContact} currentContactId={currentContactId}
+                                   contactsMsg={contactsMsg} handleNewMessage={handleNewMessage}/>
             </GeneralContainer>
         </>
     );

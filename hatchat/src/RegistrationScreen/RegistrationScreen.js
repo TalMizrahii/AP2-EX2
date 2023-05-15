@@ -1,78 +1,114 @@
+import React, {useState} from 'react';
 import './RegistrationScreen.css';
-import GeneralBackground from "../GeneralComponents/GeneralBackground";
-import RegisterBox from "../GeneralComponents/RegisterBox";
-import UserNameInput from "../LoginScreen/UserNameInput";
-import ConfirmPasswordInput from "./ConfirmPasswordInput";
-import FullNameInput from "./FullNameInput";
-import ProfilePictureText from "./ProfilePictureText";
-import CreateAccountBtn from "./CreateAccountBtn";
-import Copyright from "../GeneralComponents/Copyright";
-import { useState } from "react";
-import PasswordInputAndReq from "./PasswordInputAndReq";
-import { users } from '../DataBase/Database';
+import GeneralBackground from '../GeneralComponents/GeneralBackground';
+import RegisterBox from '../GeneralComponents/RegisterBox';
+import UserNameInput from '../LoginScreen/UserNameInput';
+import ConfirmPasswordInput from './ConfirmPasswordInput';
+import FullNameInput from './FullNameInput';
+import ProfilePictureText from './ProfilePictureText';
+import CreateAccountBtn from './CreateAccountBtn';
+import PasswordInputAndReq from './PasswordInputAndReq';
+import {users} from '../DataBase/Database';
+import {useNavigate} from 'react-router-dom';
 
-function RegistrationScreen({handleUserNameChange, handlePasswordChange,userName,password}) {
+const handleCreateAccount = (
+    fullName,
+    profilePicture,
+    password,
+    confirmPassword,
+    userName,
+    navigate
+) => {
+    if (
+        fullName === '' ||
+        profilePicture === null ||
+        password === '' ||
+        confirmPassword === '' ||
+        userName === ''
+    ) {
+        alert('Please fill in all the required fields.');
+        return;
+    }
 
+    const newUser = {
+        fullName,
+        userName,
+        password,
+        profilePicture,
+    };
+
+    users.push(newUser);
+
+    navigate('/');
+};
+
+function RegistrationScreen() {
     const [fullName, setFullName] = useState('');
-    const [profilePicture, setProfilePicture] = useState('');
-    const [passwordReg, setPasswordReg] = useState('');
-    const [userNameReq, setUserNameReq] = useState('');
+    const [profilePicture, setProfilePicture] = useState(null);
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [userName, setUserName] = useState('');
+    const [isImageUploaded, setIsImageUploaded] = useState(false);
+    const [passwordMatch, setPasswordMatch] = useState(false);
+
+    const navigate = useNavigate();
+
+    const handleUserNameChange = (e) => {
+        setUserName(e.target.value);
+    };
+
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+        if (confirmPassword !== '' && e.target.value !== '' && confirmPassword === e.target.value) {
+            setPasswordMatch(true);
+        } else {
+            setPasswordMatch(false);
+        }
+    };
 
     const handleFullNameChange = (e) => {
         setFullName(e.target.value);
     };
 
-
-
-    const handleProfilePictureChange = (e) => {
-        setProfilePicture(e.target.value);
+    const handleProfilePictureChange = (file) => {
+        setIsImageUploaded(true);
+        setProfilePicture(file);
     };
 
-    const handlePasswordReg = (e) => {
-        setPasswordReg(e.target.value);
-        handlePasswordChange(passwordReg);
-    };
-
-    const handleUserNameReg = (e) => {
-        setUserNameReq(e.target.value);
-        handleUserNameChange(userNameReq);
-    };
-
-    const handleCreateAccount = () => {
-        const existingUser = users.find((user) => user.userName === userName);
-        if (existingUser) {
-            alert('Username already exists. Please choose a different username.');
-            return;
+    const handleConfirmPasswordChange = (e) => {
+        const newConfirmPassword = e.target.value;
+        setConfirmPassword(newConfirmPassword);
+        if (newConfirmPassword !== '' && password !== '' && newConfirmPassword === password) {
+            setPasswordMatch(true);
+        } else {
+            setPasswordMatch(false);
         }
+    };
 
-        const newUser = {
-            fullName,
-            userName,
-            password,
-            profilePicture,
-        };
-
-        users.push(newUser);
-
-        console.log('User Data:', { fullName, userName, password, profilePicture });
-
+    const handleCreateAccountClick = () => {
+        handleCreateAccount(fullName, profilePicture, password, confirmPassword, userName, navigate);
         setFullName('');
-        handleUserNameChange({ target: { value: '' } });
-        handlePasswordChange({ target: { value: '' } });
-        setProfilePicture('');
+        setPassword('');
+        setConfirmPassword('');
+        setUserName('');
+        setProfilePicture(null);
+        setIsImageUploaded(false);
     };
 
     return (
         <>
-            <GeneralBackground />
+            <GeneralBackground/>
             <RegisterBox>
-                <FullNameInput onChange={handleFullNameChange} />
-                <PasswordInputAndReq onChange={handlePasswordReg} password={passwordReg} />
-                <ConfirmPasswordInput password={passwordReg} />
-                <UserNameInput onChange={handleUserNameReg} />
-                <ProfilePictureText onChange={handleProfilePictureChange} />
-                <CreateAccountBtn onClick={handleCreateAccount} />
-                <Copyright />
+                <FullNameInput handleFullNameClick={handleFullNameChange}/>
+                <PasswordInputAndReq onChange={handlePasswordChange} password={password}/>
+                <ConfirmPasswordInput
+                    password={password}
+                    handleConfirmPasswordChange={handleConfirmPasswordChange}
+                    confirmPassword={confirmPassword}
+                    passwordMatch={passwordMatch}/>
+                <UserNameInput handleUserNameClick={handleUserNameChange}/>
+                <ProfilePictureText handlePicClick={handleProfilePictureChange}/>
+                <CreateAccountBtn handleCreate={handleCreateAccountClick} isImageUploaded={isImageUploaded}/>
             </RegisterBox>
         </>
     );
