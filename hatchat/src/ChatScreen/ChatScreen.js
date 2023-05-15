@@ -70,11 +70,25 @@ function ChatScreen() {
         };
 
         setContactMsg((prevContactMsg) => {
-            const updatedContactMsg = {...prevContactMsg};
+            const updatedContactMsg = { ...prevContactMsg };
             updatedContactMsg[currentContactId] = [
                 ...(updatedContactMsg[currentContactId] || []),
-                newMessage
+                newMessage,
             ];
+
+            // Move the current contact to the top
+            setFilteredContacts((prevFilteredContacts) => {
+                const updatedContacts = [...prevFilteredContacts];
+                const index = updatedContacts.findIndex(
+                    (contact) => contact.id === currentContactId
+                );
+                if (index !== -1) {
+                    const selectedContact = updatedContacts.splice(index, 1);
+                    updatedContacts.unshift(selectedContact[0]);
+                }
+                return updatedContacts;
+            });
+
             return updatedContactMsg;
         });
     };
