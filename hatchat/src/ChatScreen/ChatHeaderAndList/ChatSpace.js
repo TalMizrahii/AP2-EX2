@@ -14,7 +14,7 @@ function ChatSpace({handleLogout, profilePicture, handleSearch, addContact, filt
                     <NavIcons handleLogout={handleLogout} filteredContacts={filteredContacts} addContact={addContact} />
                 </HeaderBox>
                 <SearchInput handleSearch={handleSearch}/>
-                <ListGroupOfContacts handleContactSwitch={handleContactSwitch} filter={filteredContacts}/>
+                <ListGroupOfContacts handleContactSwitch={handleContactSwitch} filteredContacts={filteredContacts}/>
             </div>
         </>
     );

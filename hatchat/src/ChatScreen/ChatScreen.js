@@ -1,14 +1,15 @@
-import './ChatScreen.css'
-import '../LoginScreen/LoginScreen.css'
+import './ChatScreen.css';
+import '../LoginScreen/LoginScreen.css';
 import GeneralBackground from "../GeneralComponents/GeneralBackground";
 import GeneralContainer from "./GeneralContainer";
 import ChatSpace from "./ChatHeaderAndList/ChatSpace";
 import ConversationSpace from "./ChatConversation/ConversationSpace";
-import {useState} from "react";
-import contactsData from "../DataBase/ContactsData";
+import { useState } from "react";
+// import contactsData from "../DataBase/ContactsData";
 import ContactMsg from "../DataBase/contactMsg";
-import {useLocation} from "react-router";
-import {useNavigate} from "react-router-dom";
+import { useLocation } from "react-router";
+import { useNavigate } from "react-router-dom";
+import ContactsData from "../DataBase/ContactsData";
 
 
 
@@ -22,7 +23,7 @@ function ChatScreen() {
     console.log(fullName, userName, userPassword, profilePicture);
 
     const [searchContent, setSearchContent] = useState("");
-    const [filteredContacts, setFilteredContacts] = useState(contactsData);
+    const [filteredContacts, setFilteredContacts] = useState(ContactsData);
     const [contactsMsg, setContactMsg] = useState(ContactMsg);
     const [currentContactId, setCurrentContactId] = useState(-1);
 
@@ -36,21 +37,20 @@ function ChatScreen() {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        console.log(contactsData);
         setSearchContent("");
         setFilteredContacts(null);
         setContactMsg([]);
         setCurrentContactId(-1);
-        console.log(contactsData);
+        ContactsData.length = 0;
         exitToLogin(navigate);
     }
 
     const handleSearch = (content) => {
         setSearchContent(content);
         if (content === "") {
-            setFilteredContacts(contactsData);
+            setFilteredContacts(ContactsData);
         } else {
-            const filtered = contactsData.filter((contact) =>
+            const filtered = ContactsData.filter((contact) =>
                 contact.name.includes(content)
             );
             setFilteredContacts(filtered);
@@ -58,8 +58,8 @@ function ChatScreen() {
     };
 
     const addContact = (contact) => {
-        contactsData.push(contact);
-        setFilteredContacts([...contactsData]);
+        ContactsData.push(contact);
+        setFilteredContacts([...ContactsData]);
         setCurrentContactId(contact.id);
     };
 
@@ -83,7 +83,7 @@ function ChatScreen() {
         setCurrentContactId(content);
     }
 
-    let currentContact = contactsData.find((contact) => contact.id === currentContactId);
+    let currentContact = ContactsData.find((contact) => contact.id === currentContactId);
 
 
     return (
