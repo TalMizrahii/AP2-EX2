@@ -76,6 +76,17 @@ function ChatScreen() {
                 newMessage,
             ];
 
+            // Update the bio and lastSeen of the current contact
+            const updatedContactsData = [...ContactsData];
+            const contactIndex = updatedContactsData.findIndex(
+                (contact) => contact.id === currentContactId
+            );
+            if (contactIndex !== -1) {
+                const contact = updatedContactsData[contactIndex];
+                contact.bio = newMessage.text.slice(0, 22);
+                contact.lastSeen = newMessage.timeAndDate;
+            }
+
             // Move the current contact to the top
             setFilteredContacts((prevFilteredContacts) => {
                 const updatedContacts = [...prevFilteredContacts];
@@ -89,9 +100,13 @@ function ChatScreen() {
                 return updatedContacts;
             });
 
+            // Update the ContactsData state
+            setFilteredContacts(updatedContactsData);
+
             return updatedContactMsg;
         });
     };
+
 
     const handleContactSwitch = (content) => {
         setCurrentContactId(content);
