@@ -10,9 +10,15 @@ import ContactMsg from "../DataBase/contactMsg";
 import {useLocation} from "react-router";
 import {useNavigate} from "react-router-dom";
 
+
+
+const exitToLogin = (navigate) => {
+    return navigate('/')
+};
+
 function ChatScreen() {
-    const { state } = useLocation();
-    const { fullName = '', userName = '', userPassword = '', profilePicture = '' } = state || {};
+    const {state} = useLocation();
+    const {fullName = '', userName = '', userPassword = '', profilePicture = ''} = state || {};
     console.log(fullName, userName, userPassword, profilePicture);
 
     const [searchContent, setSearchContent] = useState("");
@@ -20,18 +26,23 @@ function ChatScreen() {
     const [contactsMsg, setContactMsg] = useState(ContactMsg);
     const [currentContactId, setCurrentContactId] = useState(-1);
 
-    const navigate = useNavigate();
-    const handleLogout = (content) => {
-        setSearchContent("");
-        setFilteredContacts([]);
-        setContactMsg([]);
-        setCurrentContactId(-1);
-        navigate('/');
-    }
+
 
     let userProfilePicture = 'https://images.squarespace-cdn.com/content/v1/5c76de607fdcb8facd765433/1592926322727-OL8OFAUGXH0Q5XMF6AXC/IMG-4874.JPG';
     if (profilePicture) {
         userProfilePicture = URL.createObjectURL(profilePicture);
+    }
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        console.log(contactsData);
+        setSearchContent("");
+        setFilteredContacts(null);
+        setContactMsg([]);
+        setCurrentContactId(-1);
+        console.log(contactsData);
+        exitToLogin(navigate);
     }
 
     const handleSearch = (content) => {
@@ -80,7 +91,8 @@ function ChatScreen() {
             <GeneralBackground/>
             <GeneralContainer>
                 {/*Contains all components about the list of contacts and the search and menu functionality.*/}
-                <ChatSpace handleLogout={handleLogout} profilePicture={userProfilePicture} handleContactSwitch={handleContactSwitch}
+                <ChatSpace handleLogout={handleLogout} profilePicture={userProfilePicture}
+                           handleContactSwitch={handleContactSwitch}
                            handleSearch={handleSearch} addContact={addContact}
                            filteredContacts={filteredContacts}/>
                 {/*Contains all components about the conversation with the contacts*/}

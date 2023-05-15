@@ -21,7 +21,6 @@ const handleCreateAccount = (
 ) => {
     if (
         fullName === '' ||
-        profilePicture === null ||
         password === '' ||
         confirmPassword === '' ||
         userName === ''
@@ -86,13 +85,13 @@ function RegistrationScreen() {
     };
 
     const handleCreateAccountClick = () => {
-        handleCreateAccount(fullName, profilePicture, password, confirmPassword, userName, navigate);
         setFullName('');
         setPassword('');
         setConfirmPassword('');
         setUserName('');
         setProfilePicture(null);
         setIsImageUploaded(false);
+        handleCreateAccount(fullName, profilePicture, password, confirmPassword, userName, navigate);
     };
 
     return (
@@ -108,7 +107,7 @@ function RegistrationScreen() {
                     passwordMatch={passwordMatch}/>
                 <UserNameInput handleUserNameClick={handleUserNameChange}/>
                 <ProfilePictureText handlePicClick={handleProfilePictureChange}/>
-                <CreateAccountBtn handleCreate={handleCreateAccountClick} isImageUploaded={isImageUploaded}/>
+                <CreateAccountBtn handleCreate={handleCreateAccountClick} />
             </RegisterBox>
         </>
     );

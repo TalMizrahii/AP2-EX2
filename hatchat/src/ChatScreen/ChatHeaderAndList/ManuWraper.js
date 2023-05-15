@@ -8,9 +8,9 @@ function ManuWrapper({handleLogout}) {
         <div id="menu-group-btn" className="btn-group">
             <MenuBtn/>
             <ul className="dropdown-menu dropdown-menu-end">
-                <DropItemListBtns title="Change Profile Picture"/>
-                <DropItemListBtns title="Archive"/>
-                <DropItemListBtns title="Logout" onClick={handleLogout}/>
+                <DropItemListBtns title={"Change Profile Picture"}  handleLogout={null}/>
+                <DropItemListBtns title={"Archive"}  handleLogout={null}/>
+                <DropItemListBtns title={"Logout"}  handleLogout={handleLogout} />
             </ul>
         </div>
     );
