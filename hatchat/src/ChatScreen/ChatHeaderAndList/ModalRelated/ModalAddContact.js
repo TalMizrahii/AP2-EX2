@@ -11,10 +11,11 @@ function ModalAddContact({ addContact, filteredContacts }) {
     const [contactData, setContactData] = useState({
         id: null,
         name: "",
-        bio: "Hello",
-        lastSeen: "19/04/2023 22:55",
+        bio: "",
+        lastSeen: new Date().toLocaleString(),
         profilePic: ""
     });
+
 
     const handleChange = (event) => {
         const { name, value } = event.target;

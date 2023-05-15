@@ -1,6 +1,6 @@
-function DropItemListBtns(props){
+function DropItemListBtns({handleLogout, title}){
     return (
-        <li><a className="dropdown-item" href="#">{props.title}</a></li>
+        <li onClick={handleLogout}><a className="dropdown-item"  >{title}</a></li>
     );
 
 }

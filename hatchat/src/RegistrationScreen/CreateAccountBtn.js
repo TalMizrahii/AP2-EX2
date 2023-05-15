@@ -1,12 +1,7 @@
 import React from 'react';
 
-function CreateAccountBtn({ handleCreate, isImageUploaded }) {
+function CreateAccountBtn({ handleCreate}) {
     const handleClick = () => {
-        if (!isImageUploaded) {
-            alert('Please select a valid image file (JPG, JPEG, PNG, GIF, BMP).');
-            return;
-        }
-
         handleCreate();
     };
 

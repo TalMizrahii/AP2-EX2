@@ -13,7 +13,7 @@ function UserSelfMsg({msg, profilePicture}) {
             </div>
             <img
                 className="chatImg"
-                src={URL.createObjectURL(profilePicture)}
+                src={profilePicture}
                 alt="avatar 1"
             />
         </div>
