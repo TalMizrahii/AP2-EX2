@@ -2,7 +2,7 @@ function UserImageLeftTopCorner({profilePicture}) {
     return (
         <div className="user-img">
             <img className="dp"
-                 src={URL.createObjectURL(profilePicture)}
+                 src={profilePicture}
                  alt=""></img>
         </div>
     );

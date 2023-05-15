@@ -4,14 +4,14 @@ import ModalAddContact from "./ModalRelated/ModalAddContact";
 import ManuWrapper from "./ManuWraper";
 import React from "react";
 
-function NavIcons({addContact, filteredContacts}) {
+function NavIcons({handleLogout, addContact, filteredContacts}) {
     return (
         <div className="nav-icons">
             <AddContactIcon/>
             <ModalAddContactWrap>
                 <ModalAddContact filteredContacts={filteredContacts} addContact={addContact}/>
             </ModalAddContactWrap>
-            <ManuWrapper/>
+            <ManuWrapper handleLogout={handleLogout}/>
         </div>
     );
 }
