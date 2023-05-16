@@ -59,6 +59,7 @@ The chat room contains a list of recent conversations, images of the contant and
 Enforcing password verification by ensuring the user enters the same password twice. Additionally, preventing the user from copying and pasting the password they entered.
   
  <img width="200" alt="1" src="https://github.com/TalMizrahii/AP2-EX2/assets/103560553/2b496ddb-4061-445f-a5ac-c1a8ae1aac41">
+<img float="right" width="200" alt="1" src="https://github.com/TalMizrahii/AP2-EX2/assets/103560553/5d99088c-ce92-40e6-880f-34f30e9b0687">
 
   
   
