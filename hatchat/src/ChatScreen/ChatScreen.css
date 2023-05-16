@@ -275,11 +275,12 @@ body {
 }
 
 .chatText{
-    height: 5rem ;
+    margin-bottom: 3px; /* Add some bottom margin to create space between messages */
+    overflow-wrap: break-word;
 }
 
 .bi-emoji-smile {
-    margin-top: 5px;
+    margin-top: 1px;
     float: left;
     cursor: pointer;
 }
@@ -342,8 +343,8 @@ body {
     text-align: left;
     max-inline-size: 600px;
     overflow-wrap: break-word;
-    margin: 0 !important;
     padding: 0;
+    margin: 0 !important;
 }
 
 #LeftSideChatList {
