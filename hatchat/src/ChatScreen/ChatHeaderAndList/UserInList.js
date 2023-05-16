@@ -3,7 +3,7 @@ function UserInList({ contact, handleContactSwitch }) {
         handleContactSwitch(contact.id);
     };
 
-    const truncatedName = contact.name.length > 13 ? contact.name.substring(0, 13) + "..." : contact.name;
+    const truncatedName = contact.name.length > 12 ? contact.name.substring(0, 12) + "..." : contact.name;
 
     return (
         <li className="contactChat list-group-item list-group-item-action" onClick={handleClick}>
