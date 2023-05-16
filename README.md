@@ -66,6 +66,9 @@ $ git clone https://github.com/TalMizrahii/AP2-EX2
 # Go into the repository.
 $ cd AP2-EX2
   
+# Go into the project folder.
+$ cd hatchat
+  
 # Install the needed libraries.
 $ npm install
   
