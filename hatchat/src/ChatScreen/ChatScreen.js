@@ -5,7 +5,6 @@ import GeneralContainer from "./GeneralContainer";
 import ChatSpace from "./ChatHeaderAndList/ChatSpace";
 import ConversationSpace from "./ChatConversation/ConversationSpace";
 import { useState } from "react";
-// import contactsData from "../DataBase/ContactsData";
 import ContactMsg from "../DataBase/contactMsg";
 import { useLocation } from "react-router";
 import { useNavigate } from "react-router-dom";
@@ -26,8 +25,6 @@ function ChatScreen() {
     const [filteredContacts, setFilteredContacts] = useState(ContactsData);
     const [contactsMsg, setContactMsg] = useState(ContactMsg);
     const [currentContactId, setCurrentContactId] = useState(-1);
-
-
 
     let userProfilePicture = 'https://images.squarespace-cdn.com/content/v1/5c76de607fdcb8facd765433/1592926322727-OL8OFAUGXH0Q5XMF6AXC/IMG-4874.JPG';
     if (profilePicture) {
@@ -77,31 +74,22 @@ function ChatScreen() {
             ];
 
             // Update the bio and lastSeen of the current contact
-            const updatedContactsData = [...ContactsData];
-            const contactIndex = updatedContactsData.findIndex(
-                (contact) => contact.id === currentContactId
-            );
-            if (contactIndex !== -1) {
-                const contact = updatedContactsData[contactIndex];
-                contact.bio = newMessage.text.slice(0, 22);
-                contact.lastSeen = newMessage.timeAndDate;
-            }
-
-            // Move the current contact to the top
             setFilteredContacts((prevFilteredContacts) => {
                 const updatedContacts = [...prevFilteredContacts];
-                const index = updatedContacts.findIndex(
+                const contactIndex = updatedContacts.findIndex(
                     (contact) => contact.id === currentContactId
                 );
-                if (index !== -1) {
-                    const selectedContact = updatedContacts.splice(index, 1);
-                    updatedContacts.unshift(selectedContact[0]);
+                if (contactIndex !== -1) {
+                    const updatedContact = {
+                        ...updatedContacts[contactIndex],
+                        bio: newMessage.text.slice(0, 22),
+                        lastSeen: newMessage.timeAndDate,
+                    };
+                    updatedContacts[contactIndex] = updatedContact;
+                    updatedContacts.unshift(updatedContacts.splice(contactIndex, 1)[0]);
                 }
                 return updatedContacts;
             });
-
-            // Update the ContactsData state
-            setFilteredContacts(updatedContactsData);
 
             return updatedContactMsg;
         });
