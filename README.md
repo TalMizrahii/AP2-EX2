@@ -53,7 +53,32 @@ The chat room contains a list of recent conversations, images of the contant and
   
   <img width="400" alt="Capture" src="https://github.com/TalMizrahii/AP2-EX2/assets/103560553/46412cf8-22df-466d-a163-9b432efbdfa9">
 
+## Cool Featues
   
+
+Enforcing password verification by ensuring the user enters the same password twice. Additionally, preventing the user from copying and pasting the password they entered.
+  
+ <img width="200" alt="1" src="https://github.com/TalMizrahii/AP2-EX2/assets/103560553/2b496ddb-4061-445f-a5ac-c1a8ae1aac41">
+
+  
+  
+Checking the password format in real-time and providing the user with feedback on the specific password requirements they need to fulfill. 
+ 
+<img width="200" alt="2" src="https://github.com/TalMizrahii/AP2-EX2/assets/103560553/448fbd76-beae-4599-b1db-2d4ec3738959">
+
+  
+  
+Updating the contact list by placing the contact who sent the most recent message at the top. 
+
+<img width="200" alt="3 1" src="https://github.com/TalMizrahii/AP2-EX2/assets/103560553/087ba499-acf6-459c-bd0e-1774ca6e6b83">
+
+  
+  
+Updating the timestamp of the last message and displaying a snippet of it within the contact entry in the list.
+  
+<img width="200" alt="4" src="https://github.com/TalMizrahii/AP2-EX2/assets/103560553/433bcdb9-037c-437d-9306-6bbab6f07885">
+
+
  
 ## Installing And Executing
   
