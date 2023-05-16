@@ -1,16 +1,16 @@
- function UserInList({contact, handleContactSwitch }) {
-        const handleClick = () => {
-            handleContactSwitch(contact.id);
-        };
+function UserInList({ contact, handleContactSwitch }) {
+    const handleClick = () => {
+        handleContactSwitch(contact.id);
+    };
+
+    const truncatedName = contact.name.length > 13 ? contact.name.substring(0, 13) + "..." : contact.name;
 
     return (
         <li className="contactChat list-group-item list-group-item-action" onClick={handleClick}>
             <div className="user-img">
-                <img className="dp"
-                     src={contact.profilePic}
-                     alt=""></img>
+                <img className="dp" src={contact.profilePic} alt="" />
             </div>
-            <div className="userName">{contact.name}</div>
+            <div className="userName">{truncatedName}</div>
             <div className="timeAndHour">{contact.lastSeen}</div>
             <div className="lastMsg">{contact.bio}</div>
         </li>
