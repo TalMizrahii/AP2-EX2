@@ -12,16 +12,21 @@ function ModalAddContact({ addContact, filteredContacts }) {
         id: null,
         name: "",
         bio: "",
-        lastSeen: new Date().toLocaleString(),
-        profilePic: ""
+        lastSeen: new Date().toLocaleString("en-US", {
+            month: "long",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+        }),
+        profilePic: "",
     });
-
 
     const handleChange = (event) => {
         const { name, value } = event.target;
         setContactData((prevData) => ({
             ...prevData,
-            [name]: value
+            [name]: value,
         }));
     };
 
@@ -50,7 +55,7 @@ function ModalAddContact({ addContact, filteredContacts }) {
         // Assign the loaded image to the profilePic property
         const newContactData = {
             ...contactData,
-            profilePic
+            profilePic,
         };
 
         addContact(newContactData);
@@ -59,8 +64,14 @@ function ModalAddContact({ addContact, filteredContacts }) {
             id: null,
             name: "",
             bio: "Hello",
-            lastSeen: "19/04/2023 22:55",
-            profilePic: ""
+            lastSeen: new Date().toLocaleString("en-US", {
+                month: "long",
+                day: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+                hour12: true,
+            }),
+            profilePic: "",
         });
     };
 

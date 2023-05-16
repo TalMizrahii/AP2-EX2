@@ -4,12 +4,11 @@ import GeneralBackground from "../GeneralComponents/GeneralBackground";
 import GeneralContainer from "./GeneralContainer";
 import ChatSpace from "./ChatHeaderAndList/ChatSpace";
 import ConversationSpace from "./ChatConversation/ConversationSpace";
-import { useState } from "react";
+import {useState} from "react";
 import ContactMsg from "../DataBase/contactMsg";
-import { useLocation } from "react-router";
-import { useNavigate } from "react-router-dom";
+import {useLocation} from "react-router";
+import {useNavigate} from "react-router-dom";
 import ContactsData from "../DataBase/ContactsData";
-
 
 
 const exitToLogin = (navigate) => {
@@ -80,12 +79,11 @@ function ChatScreen() {
                     (contact) => contact.id === currentContactId
                 );
                 if (contactIndex !== -1) {
-                    const updatedContact = {
+                    updatedContacts[contactIndex] = {
                         ...updatedContacts[contactIndex],
                         bio: newMessage.text.slice(0, 22),
                         lastSeen: newMessage.timeAndDate,
                     };
-                    updatedContacts[contactIndex] = updatedContact;
                     updatedContacts.unshift(updatedContacts.splice(contactIndex, 1)[0]);
                 }
                 return updatedContacts;

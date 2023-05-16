@@ -6,24 +6,27 @@ function InputMsgLowerBar({ handleFirstNextMessage }) {
 
     const handleNewMsg = (event) => {
         event.preventDefault();
-        if (textMsg.trim() !== '') {
+        if (textMsg.trim() !== "") {
             const sentDate = new Date(Date.now());
-            const formattedDate = sentDate.toLocaleString("en-US", {
-                hour: "numeric",
-                minute: "numeric",
+            const options = {
                 month: "long",
                 day: "numeric",
-            });
+                hour: "numeric",
+                minute: "numeric",
+                hour12: true,
+            };
+            const formattedDate = sentDate.toLocaleString("en-US", options);
 
             handleFirstNextMessage({
                 text: textMsg,
-                timeAndDate: formattedDate.toString(),
+                timeAndDate: formattedDate,
             });
 
             // Clear the input field after sending the message
-            setTextMsg('');
+            setTextMsg("");
         }
     };
+
 
     const handleInputChange = (event) => {
         setTextMsg(event.target.value);
