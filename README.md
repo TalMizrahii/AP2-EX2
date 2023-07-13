@@ -18,7 +18,7 @@
 
 ## Description
     
-This project is a web application developed using React. It is an extension of the web UI that was created in the first assignment. The application includes the same screens as in the previous assignment. The goal is to refactor the code and transform it into a React application composed of appropriate components.
+This project is a web application developed using React. It is an extension of the web UI that was created in the first assignment. The application includes the same screens as in the [previous](https://github.com/TalMizrahii/AP2-Ex1) assignment. The goal is to refactor the code and transform it into a React application composed of appropriate components.
 
 The project focuses on implementing input validation and providing clear visual feedback to the user. The registration and login screens require input validation for all fields, with logical constraints on each field. For example, the password must be at least 8 characters long, include a combination of characters and letters, and so on. The user should receive visual indications when entering invalid values.
 
